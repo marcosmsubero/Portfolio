@@ -825,3 +825,145 @@ body:has(section[aria-label="Proyectos Sencillos de Data Analytics en Operacione
 .section{
   padding-bottom: 20px !important;
 }
+
+/* =========================================================
+   PRINT VERSION — PORTFOLIO A4 OPTIMIZADO
+   Añadir al FINAL del archivo
+   ========================================================= */
+
+@page{
+  size: A4;
+  margin: 1.5cm;
+}
+
+@media print{
+
+  /* Reset global */
+  *,
+  *::before,
+  *::after{
+    animation: none !important;
+    transition: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    backdrop-filter: none !important;
+  }
+
+  html, body{
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  body{
+    font-size: 11pt;
+    line-height: 1.45;
+  }
+
+  h1{ font-size: 22pt; }
+  h2{ font-size: 16pt; }
+  h3{ font-size: 13pt; }
+
+  /* Oculta elementos no imprimibles */
+  nav,
+  .site-header,
+  .navMenu,
+  .btnPrimary,
+  .btn,
+  .btnSm,
+  .primaryCtas,
+  .filtersWrap,
+  .searchBox,
+  .uxHint,
+  .silhouette,
+  .lookerEmbed,
+  iframe,
+  video{
+    display: none !important;
+  }
+
+  /* Quita fondos oscuros y glass */
+  .card,
+  .heroCard,
+  .projectCard,
+  .trustItem,
+  .metric-card{
+    background: #ffffff !important;
+    border: 1px solid #dddddd !important;
+    color: #000000 !important;
+  }
+
+  .executive-hero{
+    background: #ffffff !important;
+    color: #000000 !important;
+    padding: 0 0 20px 0 !important;
+  }
+
+  /* Layout lineal (sin grids 3 columnas) */
+  .projectsGrid,
+  .cardsGrid,
+  .hero-metrics,
+  .trustBar,
+  .projectStack{
+    display: block !important;
+  }
+
+  .projectCard,
+  .card,
+  .trustItem{
+    margin-bottom: 18px !important;
+    padding: 16px !important;
+    page-break-inside: avoid;
+  }
+
+  /* Secciones compactas */
+  .section{
+    padding: 18px 0 !important;
+    page-break-inside: avoid;
+  }
+
+  .sectionHead{
+    margin-bottom: 14px !important;
+  }
+
+  .sectionLead,
+  .sectionLeadFull{
+    text-align: left !important;
+  }
+
+  /* Imágenes limpias */
+  img{
+    max-width: 100% !important;
+    height: auto !important;
+    page-break-inside: avoid;
+  }
+
+  /* Evita cortar títulos */
+  h1, h2, h3{
+    page-break-after: avoid;
+  }
+
+  /* Muestra URL en enlaces */
+  a::after{
+    content: " (" attr(href) ")";
+    font-size: 8pt;
+    color: #555;
+  }
+
+  /* Código SQL más compacto */
+  .codeCard{
+    max-height: none !important;
+    overflow: visible !important;
+    background: #f4f4f4 !important;
+    border: 1px solid #ddd !important;
+  }
+
+  pre{
+    white-space: pre-wrap !important;
+    word-break: break-word;
+  }
+
+  /* Fuerza salto manual si lo necesitas */
+  .page-break{
+    page-break-before: always;
+  }
+}
