@@ -827,143 +827,140 @@ body:has(section[aria-label="Proyectos Sencillos de Data Analytics en Operacione
 }
 
 /* =========================================================
-   PRINT VERSION — PORTFOLIO A4 OPTIMIZADO
+   PRINT A4 — MANTIENE ESTILO (oscuro + fondos + glass)
    Añadir al FINAL del archivo
    ========================================================= */
 
 @page{
   size: A4;
-  margin: 1.5cm;
+  margin: 1.2cm;
 }
 
 @media print{
 
-  /* Reset global */
+  /* Mantener colores y fondos tal cual (importante en Chrome) */
+  html, body{
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Quita animaciones/hover para que no cambie el layout */
   *,
   *::before,
   *::after{
     animation: none !important;
     transition: none !important;
-    box-shadow: none !important;
-    text-shadow: none !important;
-    backdrop-filter: none !important;
   }
 
-  html, body{
-    background: #ffffff !important;
-    color: #000000 !important;
-  }
-
+  /* Mantén el fondo del body (tu gradiente) */
   body{
-    font-size: 11pt;
-    line-height: 1.45;
+    background:
+      radial-gradient(1000px 700px at 12% 0%, rgba(100,150,255,0.08), transparent 60%),
+      radial-gradient(900px 600px at 88% 12%, rgba(100,150,255,0.06), transparent 55%),
+      radial-gradient(900px 600px at 50% 95%, rgba(100,150,255,0.05), transparent 55%),
+      linear-gradient(180deg, var(--bg0), var(--bg1)) !important;
   }
 
-  h1{ font-size: 22pt; }
-  h2{ font-size: 16pt; }
-  h3{ font-size: 13pt; }
-
-  /* Oculta elementos no imprimibles */
-  nav,
-  .site-header,
-  .navMenu,
-  .btnPrimary,
-  .btn,
-  .btnSm,
-  .primaryCtas,
-  .filtersWrap,
-  .searchBox,
-  .uxHint,
-  .silhouette,
-  .lookerEmbed,
-  iframe,
-  video{
-    display: none !important;
-  }
-
-  /* Quita fondos oscuros y glass */
+  /* Evita sombras excesivas (opcional, pero ayuda a impresión) */
   .card,
   .heroCard,
   .projectCard,
-  .trustItem,
-  .metric-card{
-    background: #ffffff !important;
-    border: 1px solid #dddddd !important;
-    color: #000000 !important;
-  }
-
-  .executive-hero{
-    background: #ffffff !important;
-    color: #000000 !important;
-    padding: 0 0 20px 0 !important;
-  }
-
-  /* Layout lineal (sin grids 3 columnas) */
-  .projectsGrid,
-  .cardsGrid,
-  .hero-metrics,
-  .trustBar,
-  .projectStack{
-    display: block !important;
-  }
-
-  .projectCard,
-  .card,
   .trustItem{
-    margin-bottom: 18px !important;
-    padding: 16px !important;
-    page-break-inside: avoid;
+    box-shadow: none !important;
   }
 
-  /* Secciones compactas */
+  /* Mantén glass y bordes (si tu navegador lo soporta al imprimir) */
+  .card,
+  .heroCard,
+  .projectCard,
+  .trustItem{
+    background: linear-gradient(145deg, rgba(20, 38, 70, 0.85), rgba(14, 26, 48, 0.95)) !important;
+    border: 1px solid rgba(100,150,255,0.18) !important;
+  }
+
+  /* Layout A4: reduce un poco tipografía para que quepa mejor */
+  body{
+    font-size: 10.5pt;
+    line-height: 1.45;
+  }
+
+  h1{ font-size: 20pt; }
+  h2{ font-size: 15pt; }
+  h3{ font-size: 12.5pt; }
+
+  /* Oculta UI que no aporta en PDF */
+  .filtersWrap,
+  .searchBox,
+  .uxHint{
+    display: none !important;
+  }
+
+  /* Si NO quieres header/nav en el PDF, descomenta */
+  /*
+  .site-header,
+  nav,
+  .navMenu{
+    display: none !important;
+  }
+  */
+
+  /* Botones: opcional ocultarlos (en PDF suelen sobrar) */
+  .btn,
+  .btnPrimary,
+  .btnSm,
+  .primaryCtas{
+    display: none !important;
+  }
+
+  /* Looker/iframes: en PDF suelen romper o salir en blanco */
+  .lookerEmbed,
+  iframe{
+    display: none !important;
+  }
+
+  /* Control de saltos: evita cortar cards y títulos */
   .section{
-    padding: 18px 0 !important;
     page-break-inside: avoid;
   }
-
-  .sectionHead{
-    margin-bottom: 14px !important;
+  .card,
+  .heroCard,
+  .projectCard,
+  .trustItem{
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  h1, h2, h3{
+    page-break-after: avoid;
+    break-after: avoid;
   }
 
+  /* Mantén imágenes bien en página */
+  img{
+    max-width: 100% !important;
+    height: auto !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Justificado en papel suele crear ríos: puedes mantenerlo o forzar left */
+  /* Si quieres mantener tu justificado, comenta este bloque */
   .sectionLead,
   .sectionLeadFull{
     text-align: left !important;
   }
 
-  /* Imágenes limpias */
-  img{
-    max-width: 100% !important;
-    height: auto !important;
-    page-break-inside: avoid;
+  /* Evita que :hover altere estilos durante impresión */
+  .card:hover,
+  .projectCard:hover,
+  .trustItem:hover{
+    border-color: rgba(100,150,255,0.18) !important;
+    box-shadow: none !important;
+    transform: none !important;
   }
 
-  /* Evita cortar títulos */
-  h1, h2, h3{
-    page-break-after: avoid;
-  }
-
-  /* Muestra URL en enlaces */
-  a::after{
-    content: " (" attr(href) ")";
-    font-size: 8pt;
-    color: #555;
-  }
-
-  /* Código SQL más compacto */
-  .codeCard{
-    max-height: none !important;
-    overflow: visible !important;
-    background: #f4f4f4 !important;
-    border: 1px solid #ddd !important;
-  }
-
-  pre{
-    white-space: pre-wrap !important;
-    word-break: break-word;
-  }
-
-  /* Fuerza salto manual si lo necesitas */
+  /* Saltos manuales (si los usas en HTML) */
   .page-break{
     page-break-before: always;
+    break-before: page;
   }
 }
