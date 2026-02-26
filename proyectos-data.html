@@ -1,0 +1,205 @@
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Marcos Medina Subero — Proyectos (Data Analytics)</title>
+    <meta
+      name="description"
+      content="Proyectos de Data Analytics en Operaciones: OEE, mejora continua, reporting, SQL, automatización y optimización de rendimiento. Casos orientados a impacto."
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#0b1320" />
+    <link rel="canonical" href="proyectos-data.html" />
+
+    <meta property="og:title" content="Marcos Medina Subero — Proyectos Data Analytics" />
+    <meta
+      property="og:description"
+      content="Casos de Data Analytics orientados a negocio: OEE, dashboards, SQL, automatización y rendimiento."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="proyectos-data.html" />
+
+    <link rel="preload" href="css/styles.css" as="style" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="preload" href="css/data.css" as="style" />
+    <link rel="stylesheet" href="css/data.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Saltar al contenido</a>
+
+    <header class="site-header" data-header>
+      <div class="container header-inner">
+        <a class="brand" href="index-data.html" aria-label="Ir al inicio (Data)">
+          <img
+            class="brandAvatar"
+            src="assets/images/foto_perfil.jpg"
+            alt="Foto de perfil de Marcos Subero"
+            width="36"
+            height="36"
+            loading="eager"
+            decoding="async"
+          />
+          <span class="brandText">Marcos Medina Subero</span>
+        </a>
+
+        <nav class="nav" aria-label="Navegación principal (Data)" data-nav>
+          <button
+            class="navToggle"
+            type="button"
+            aria-label="Abrir menú"
+            aria-expanded="false"
+            aria-controls="navMenu"
+            data-nav-toggle
+          >
+            <span class="navToggleBars" aria-hidden="true"></span>
+          </button>
+
+          <div class="navMenu navMenuData" id="navMenu" data-nav-menu>
+            <a class="navLink" href="index-data.html">Inicio</a>
+            <a class="navLink" href="perfil-data.html">Perfil</a>
+            <a class="navLink" href="proyectos-data.html">Proyectos</a>
+            <a class="navLink" href="contacto-data.html">Contacto</a>
+
+            <a class="navBack" href="index-data.html" aria-label="Volver a portada">
+              <svg viewBox="0 0 24 24" class="navBackIcon" aria-hidden="true" focusable="false">
+                <path d="M14 6 L8 12 L14 18" />
+              </svg>
+            </a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="section hero" aria-label="Proyectos Sencillos de Data Analytics en Operaciones">
+        <div class="container">
+          <div class="sectionHead">
+            <h1 class="heroTitle reveal">
+              Proyectos Sencillos de
+              <span class="accent">Análisis de Datos</span>
+            </h1>
+            <p class="sectionLead sectionLeadFull reveal">
+              Casos centrados en eficiencia operativa y toma de decisiones basada en datos: identificación de causas raíz, priorización 
+              de palancas de mejora y estimación de impacto económico. Los datasets están anonimizados para preservar confidencialidad, 
+              pero reproducen estructuras, complejidad y dinámicas reales de entornos industriales.
+            </p>
+          </div>
+
+          <div class="projectsGrid" id="projectsGrid">
+            
+            <article class="projectCard reveal" data-tags="operaciones eficiencia oee performance availability downtime google-sheets mejora-continua root-cause pareto">
+              <p class="trustBig">Eficiencia productiva</p>
+              <h3 class="cardTitle">Diagnóstico OEE y pérdidas de performance en línea industrial</h3>
+              <p class="cardText">
+                Caso simulado (6 meses, 4 líneas, 3 turnos) para identificar el driver real del gap de OEE y convertirlo en una recomendación operativa accionable.
+                Aislamiento de un outlier por línea, cruce performance + mix de producto y estimación de impacto en capacidad y coste.
+              </p>
+
+              <ul class="chipRow" aria-label="Tecnologías">
+                <li class="chip">Google Sheets</li>
+                <li class="chip">OEE</li>
+                <li class="chip">Tablas dinámicas</li>
+                <li class="chip">Root Cause</li>
+                <li class="chip">Executive Dashboard</li>
+              </ul>
+
+              <div class="primaryCtas">
+                <a class="btn btnPrimary btnSm" href="proyecto-eficiencia-data.html">
+                  Ver caso completo
+                </a>
+              </div>
+            </article>
+
+            
+            <article class="projectCard reveal" data-tags="looker-studio dataviz dashboard filtros oee operaciones performance">
+              <p class="trustBig">Visualización con Looker Studio</p>
+              <h3 class="cardTitle">Dashboard interactivo OEE · Capa de visualización sobre dataset simulado</h3>
+              <p class="cardText">
+                En este apartado se presenta un breve informe en Looker Studio para explorar el mismo modelo (turno–línea–familia) con filtros,
+                comparativa por línea y diagnóstico por mix de producto. 
+              </p>
+
+              <ul class="chipRow" aria-label="Tecnologías">
+                <li class="chip">Looker Studio</li>
+                <li class="chip">Dashboards</li>
+                <li class="chip">Storytelling</li>
+              </ul>
+
+              <div class="primaryCtas" style="margin-top:18px;">
+                <a class="btn btnPrimary btnSm" href="proyecto-looker-oee.html">Ver dashboard</a>
+              </div>
+            </article>
+
+            
+            <article class="projectCard reveal" data-tags="python oee xgboost shap explicabilidad interpretabilidad industria operaciones downtime performance timeseries cv feature-engineering">
+              <p class="trustBig">OEE avanzado (Python)</p>
+              <h3 class="cardTitle">Modelos explicativos para drivers de Downtime y Performance (XGBoost + SHAP)</h3>
+              <p class="cardText">
+                Caso simulado a nivel turno–línea–familia para explicar qué factores empujan el downtime_rate y el perf_gap.
+                Entrenamiento con split temporal (TimeSeriesSplit), pipeline con OneHotEncoder y generación de insights accionables:
+                ranking global de drivers y análisis local para segmentos críticos (p. ej., L4 · turno M · Envase 250ml).
+              </p>
+
+              <ul class="chipRow" aria-label="Tecnologías">
+                <li class="chip">Python</li>
+                <li class="chip">XGBoost</li>
+                <li class="chip">SHAP</li>
+                <li class="chip">TimeSeriesSplit</li>
+                <li class="chip">OEE</li>
+              </ul>
+
+              <div class="primaryCtas">
+                <a class="btn btnPrimary btnSm" href="proyecto-oee-avanzado-python.html">
+                  Ver caso completo
+                </a>
+              </div>
+            </article>
+
+            <article class="projectCard reveal"
+              data-tags="sql postgresql power-bi powerbi rendimiento performance calidad-datos deduplicacion joins indexing cte window-functions explain etl modelado">
+              <p class="trustBig">SQL para PowerBI</p>
+              <h3 class="cardTitle">Rendimiento, calidad de datos y reporting avanzado</h3>
+              <p class="cardText">
+                Construcción de una capa SQL “BI-ready” sobre dataset tipo ERP para consumo en Power BI: joins correctos y granularidad estable,
+                control de duplicados, optimización con índices y reporting avanzado con CTEs y funciones de ventana.
+              </p>
+
+              <ul class="chipRow" aria-label="Tecnologías">
+                <li class="chip">PostgreSQL</li>
+                <li class="chip">Power BI</li>
+                <li class="chip">EXPLAIN</li>
+                <li class="chip">Indexing</li>
+                <li class="chip">CTEs</li>
+                <li class="chip">Window Functions</li>
+              </ul>
+
+              <div class="primaryCtas">
+                <a class="btn btnPrimary btnSm" href="proyecto-sql-powerbi.html">Ver proyecto</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footerInner">
+        <div class="footerRight">
+          <a class="footerLink" href="https://www.linkedin.com/in/marcos-medina-subero-971167247/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="footerLink" href="https://www.instagram.com/marcosmsubero/" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a class="footerLink" href="https://wa.me/34699616190?text=Hola%20Marcos%2C%20me%20interesa%20una%20propuesta%20de%20Data%20Analytics%20(Operaciones%20%2F%20OEE%20%2F%20Dashboards)." target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="container footerBottom">
+        <p class="footerSmall">© <span id="year"></span> Marcos Medina Subero. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+
+    <script defer src="js/main.js"></script>
+  </body>
+</html>

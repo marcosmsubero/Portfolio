@@ -1,0 +1,347 @@
+<!-- proyecto-eficiencia-data.html (CORREGIDO COMPLETO · RUTA assets/projects/ · NARRATIVA SENIOR) -->
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Marcos Medina Subero — Proyecto · Diagnóstico OEE / Performance (Data)</title>
+    <meta
+      name="description"
+      content="Caso simulado de analítica industrial: diagnóstico OEE, pérdidas de performance, cruce por mix de producto y estimación de impacto económico con dashboard ejecutivo."
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#0b1320" />
+    <link rel="canonical" href="proyecto-eficiencia-data.html" />
+
+    <meta property="og:title" content="Marcos Medina Subero — Proyecto · Diagnóstico OEE / Performance" />
+    <meta
+      property="og:description"
+      content="Caso simulado industrial: OEE, performance loss, análisis por línea y mix de producto, y plan de acción priorizado."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="proyecto-eficiencia-data.html" />
+
+    <link rel="preload" href="css/styles.css" as="style" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="preload" href="css/data.css" as="style" />
+    <link rel="stylesheet" href="css/data.css" />
+  </head>
+
+  <body class="dataProject">
+    <a class="skip-link" href="#main">Saltar al contenido</a>
+
+    <header class="site-header" data-header>
+      <div class="container header-inner">
+        <a class="brand" href="index-data.html" aria-label="Ir al inicio (Data)">
+          <img
+            class="brandAvatar"
+            src="assets/images/foto_perfil.jpg"
+            alt="Foto de perfil de Marcos Subero"
+            width="36"
+            height="36"
+            loading="eager"
+            decoding="async"
+          />
+          <span class="brandText">Marcos Medina Subero</span>
+        </a>
+
+        <nav class="nav" aria-label="Navegación principal (Data)" data-nav>
+          <button
+            class="navToggle"
+            type="button"
+            aria-label="Abrir menú"
+            aria-expanded="false"
+            aria-controls="navMenu"
+            data-nav-toggle
+          >
+            <span class="navToggleBars" aria-hidden="true"></span>
+          </button>
+
+          <div class="navMenu navMenuData" id="navMenu" data-nav-menu></div>
+          <a class="navLink" href="index-data.html">Inicio</a>
+            <a class="navLink" href="perfil-data.html">Perfil</a>
+            <a class="navLink isActive" href="proyectos-data.html">Proyectos</a>
+            <a class="navLink" href="contacto-data.html">Contacto</a>
+
+            <a class="navBack" href="proyectos-data.html" aria-label="Volver a portada">
+              <svg viewBox="0 0 24 24" class="navBackIcon" aria-hidden="true" focusable="false">
+                <path d="M14 6 L8 12 L14 18" />
+              </svg>
+            </a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- HERO -->
+      <section class="section hero" aria-label="Proyecto: Diagnóstico OEE y pérdidas de performance">
+        <div class="container">
+          <div class="sectionHead">
+
+            <h1 class="heroTitle reveal">
+              Diagnóstico de pérdidas de <span class="accent">performance</span> en línea industrial mediante OEE
+            </h1>
+
+            <p class="sectionLead sectionLeadFull reveal">
+              Construí un dashboard ejecutivo en Google Sheets (6 meses de datos, 4 líneas, 3 turnos) para detectar un gap de OEE, aislar el driver principal
+              (availability vs performance) y traducir el hallazgo a impacto <b>operativo</b> y económicamente cuantificable.
+              El dataset es simulado para preservar confidencialidad, pero replica la estructura, granularidad y decisiones típicas de un entorno real de planta (captura por turno,
+              mezcla de producto, paradas y estándar de ciclo).
+            </p>
+
+            <div class="projectsGrid">
+              <article class="projectCard reveal">
+                <p class="trustBig">Objetivo</p>
+                <p class="cardText">
+                  Identificar la causa más probable del diferencial de OEE, validar hipótesis con cruces robustos y entregar un plan de acción priorizado con foco en impacto.
+                </p>
+              </article>
+
+              <article class="projectCard reveal">
+                <p class="trustBig">Entregables</p>
+                <p class="cardText">
+                  Dashboard ejecutivo + evidencia analítica (pivots y cruces) + cuantificación del potencial (pp de OEE, horas equivalentes y marco de estimación económica).
+                </p>
+              </article>
+
+              <article class="projectCard reveal">
+                <p class="trustBig">Hallazgo clave</p>
+                <p class="cardText">
+                  La línea con peor OEE no estaba penalizada por paradas, sino por pérdida de velocidad sostenida concentrada en familias específicas de producto (mix como driver).
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RESUMEN EJECUTIVO -->
+      <section class="section" aria-label="Resumen ejecutivo">
+        <div class="container">
+          <div class="aboutGrid">
+            <div class="aboutCopy">
+              <p class="trustBig reveal">Resumen ejecutivo</p>
+
+              <p class="sectionLead sectionLeadFull reveal">
+                El OEE medio de planta se mantenía relativamente estable, pero una línea (L4) presentaba un diferencial negativo sostenido.
+                La disponibilidad era homogénea entre líneas y el downtime no explicaba el gap, por lo que el análisis se centró en performance (pérdida de velocidad).
+                El cruce performance × familia × línea demostró que L4 estaba dedicada al 100% a tres familias con performance aproximada del 78%.
+                Con ese diagnóstico, la presentación ejecutiva quedó orientada a decisión: cuantificación del diferencial, evidencia por cruce de variables y un plan de acción por fases
+                (validación de estándar, microparadas y verificación de limitadores técnicos).
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MI CONTRIBUCIÓN (NUEVO: clarifica “qué hice yo”) -->
+      <section class="section" aria-label="Mi contribución">
+        <div class="container">
+          <div class="sectionHead">
+            <p class="trustBig reveal">Planteamiento</p>
+
+          <div class="projectsGrid mt12">
+            <article class="projectCard reveal">
+              <p class="trustBig">Modelado y KPI</p>
+              <ul class="cardList">
+                <li>Definición y cálculo de KPIs (OEE, availability, performance) a grano turno–línea–familia.</li>
+                <li>Estructura compatible con análisis tipo “star schema” para escalar el modelo a BI.</li>
+              </ul>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="trustBig">Validación y calidad</p>
+              <ul class="cardList">
+                <li>Reconciliación de tiempos y chequeos de consistencia para reducir riesgo de sesgos.</li>
+                <li>Comparativa downtime neto vs registrado como control de calidad de captura.</li>
+              </ul>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="trustBig">Análisis e impacto</p>
+              <ul class="cardList">
+                <li>Cruces críticos (performance × familia × línea) para separar “producto lento” de “línea limitada”.</li>
+                <li>Estimación de potencial (pp de OEE / horas equivalentes) y propuesta de plan priorizado.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- DATOS / MODELO -->
+      <section class="section" aria-label="Datos y modelo">
+        <div class="container">
+          <div class="sectionHead mt12">
+            <p class="trustBig reveal">Buenas prácticas</p>
+            <p class="sectionLead sectionLeadFull reveal">
+              El proyecto incluye validaciones (consistencia OEE recalculado, balance de tiempos, ratio downtime registrado vs neto) para evitar conclusiones basadas en datos incoherentes.
+            </p>
+          </div>
+
+          <!-- NUEVO: aterriza “buenas prácticas” a checks concretos -->
+          <div class="projectsGrid mt12">
+            <article class="projectCard reveal">
+              <p class="trustBig">Checks de consistencia</p>
+              <ul class="cardList">
+                <li>Balance de tiempos: planned_time ≈ runtime + downtime (tolerancias).</li>
+                <li>Coherencia KPI: OEE ≈ availability × performance.</li>
+                <li>Detección de outliers por turno/día (registros incompletos o picos no plausibles).</li>
+              </ul>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="trustBig">Checks operativos</p>
+              <ul class="cardList">
+                <li>Consistencia de ideal_cycle_time por familia (evitar “estándares” erróneos).</li>
+                <li>Comparativa downtime neto vs registrado (sesgo de captura).</li>
+              </ul>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="trustBig">Limitaciones</p>
+              <ul class="cardList">
+                <li>Dataset simulado: reproduce lógica y granularidad, pero no incluye restricciones de negocio (urgencias, cambios de orden, prioridades comerciales) de un MES real.</li>
+                <li>En un entorno productivo se segmentaría adicionalmente por turno, semana y ventanas de estabilidad de proceso.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- EVIDENCIA / VISUALES -->
+      <section class="section" aria-label="Evidencia y visualizaciones">
+        <div class="container">
+          <div class="sectionHead">
+            <p class="eyebrow reveal">Evidencia · Diagnóstico · Impacto</p>
+            <h2 class="heroTitle reveal">Visualizaciones clave</h2>
+          </div>
+
+          <div class="projectsGrid">
+            <article class="projectCard reveal">
+              <p class="trustBig">1) Dashboard ejecutivo (visión general)</p>
+              <p class="cardText">OEE, Availability, Performance, Plan compliance y resumen por línea.</p>
+              <figure class="mt12">
+                <img
+                  src="assets/projects/oee-plastics/dashboard-hero.png"
+                  alt="Dashboard ejecutivo OEE: visión general de KPIs y comparativa por líneas"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption class="cardText">Captura del dashboard completo.</figcaption>
+              </figure>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="trustBig">2) Performance por línea</p>
+              <p class="cardText">Evidencia del gap: L4 penaliza performance frente al resto.</p>
+              <figure class="mt12">
+                <img
+                  src="assets/projects/oee-plastics/performance-by-line.png"
+                  alt="Gráfico: performance promedio por línea (L4 muestra el gap)"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption class="cardText">Comparativa de performance por línea.</figcaption>
+              </figure>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="trustBig">3) OEE por línea</p>
+              <p class="cardText">Traducción del problema a KPI de dirección: permite priorizar sin entrar todavía en detalle técnico.</p>
+              <figure class="mt12">
+                <img
+                  src="assets/projects/oee-plastics/oee-by-line.png"
+                  alt="Gráfico: OEE promedio por línea"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption class="cardText">Comparativa de OEE por línea.</figcaption>
+              </figure>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="trustBig">4) Mix L4 vs Performance (gráfico combinado)</p>
+              <p class="cardText">
+                Gráfico clave: barras con share de runtime en L4 por familia y línea con performance. Explica causa + peso + prioridad de forma inmediata.
+              </p>
+              <figure class="mt12">
+                <img
+                  src="assets/projects/oee-plastics/l4-mix-vs-performance.png"
+                  alt="Gráfico combinado: share de runtime en L4 por familia y performance asociado"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption class="cardText">Mix de L4 (peso) vs performance (driver).</figcaption>
+              </figure>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- RESULTADOS / IMPACTO -->
+      <section class="section" aria-label="Resultados e impacto">
+        <div class="container">
+          <div class="projectsGrid">
+            <article class="projectCard reveal">
+              <p class="trustBig">Diagnóstico final</p>
+              <p class="cardText">
+                L4 presenta el peor OEE por pérdida de performance, no por indisponibilidad. La evidencia indica que el gap es estructural por mix:
+                la línea trabaja familias con performance ~78% de forma sostenida, penalizando capacidad y output.
+              </p>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="trustBig">Cuantificación del gap</p>
+              <p class="cardText">
+                Con promedios a 6 meses, el patrón es consistente: la disponibilidad se mantiene alineada entre líneas y el diferencial se explica casi en su totalidad por performance.
+                Con un escenario conservador de convergencia de performance de L4 hacia el promedio del resto, el OEE sube de ~68% a ~81% (+13 pp),
+                equivalente a ~+19% de output con las mismas horas planificadas.
+                <b>Nota</b>: en un entorno real, la estimación se confirmaría segmentando por turnos y ventanas de estabilidad de proceso para evitar confundir variabilidad con tendencia.
+              </p>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="trustBig">Impacto económico (marco aplicable)</p>
+              <p class="cardText">
+                Para estimar el impacto económico en una empresa real se requieren tres inputs: (1) horas planificadas, (2) diferencial de OEE objetivo vs actual y (3) valor €/hora de capacidad
+                (o margen unitario). Con esos inputs, el cálculo es auditable y se puede contrastar con finanzas/operaciones.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONCLUSIÓN (NUEVO: cierre “so-what” sin eliminar nada) -->
+      <section class="section" aria-label="Conclusión">
+        <div class="container">
+          <div class="sectionHead">
+            <p class="trustBig reveal">Conclusión</p>
+            <p class="sectionLead sectionLeadFull reveal">
+              El valor del caso no es solo mostrar KPIs, sino demostrar el camino completo: detectar el outlier, aislar el driver real (performance), atribuirlo a mix con evidencia y
+              traducirlo en una decisión operativa. En un entorno productivo, el siguiente paso inmediato sería ejecutar una
+              validación en planta para decidir entre optimización de proceso (estándar/microparadas/limitadores) o rebalanceo de mix.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footerInner">
+        <div class="footerRight">
+          <a class="footerLink" href="https://www.linkedin.com/in/marcos-medina-subero-971167247/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="footerLink" href="https://www.instagram.com/marcosmsubero/" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a class="footerLink" href="https://wa.me/34699616190?text=Hola%20Marcos%2C%20me%20interesa%20tu%20proyecto%20de%20OEE%20y%20diagn%C3%B3stico%20de%20performance." target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="container footerBottom">
+        <p class="footerSmall">© <span id="year"></span> Marcos Medina Subero. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+
+    <script defer src="js/main.js"></script>
+  </body>
+</html>

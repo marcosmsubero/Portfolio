@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Marcos Medina Subero — Proyecto · Dashboard OEE en Looker Studio</title>
+    <meta
+      name="description"
+      content="Capa de Business Intelligence en Looker Studio sobre modelo OEE simulado. Dashboard interactivo con KPIs ejecutivos, filtros y diagnóstico estructural por mix de producto."
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#0b1320" />
+    <link rel="canonical" href="proyecto-looker-oee.html" />
+
+    <link rel="preload" href="css/styles.css" as="style" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="preload" href="css/data.css" as="style" />
+    <link rel="stylesheet" href="css/data.css" />
+  </head>
+
+  <body class="dataProject">
+    <a class="skip-link" href="#main">Saltar al contenido</a>
+
+    <header class="site-header" data-header>
+      <div class="container header-inner">
+        <a class="brand" href="index-data.html" aria-label="Ir al inicio (Data)">
+          <img
+            class="brandAvatar"
+            src="assets/images/foto_perfil.jpg"
+            alt="Foto de perfil de Marcos Subero"
+            width="36"
+            height="36"
+            loading="eager"
+            decoding="async"
+          />
+          <span class="brandText">Marcos Medina Subero</span>
+        </a>
+
+        <nav class="nav" aria-label="Navegación principal (Data)" data-nav>
+          <button
+            class="navToggle"
+            type="button"
+            aria-label="Abrir menú"
+            aria-expanded="false"
+            aria-controls="navMenu"
+            data-nav-toggle
+          >
+            <span class="navToggleBars" aria-hidden="true"></span>
+          </button>
+
+          <div class="navMenu navMenuData" id="navMenu" data-nav-menu>
+            <a class="navLink" href="index-data.html">Inicio</a>
+            <a class="navLink" href="perfil-data.html">Perfil</a>
+            <a class="navLink isActive" href="proyectos-data.html">Proyectos</a>
+            <a class="navLink" href="contacto-data.html">Contacto</a>
+
+            <a class="navBack" href="proyectos-data.html" aria-label="Volver a portada">
+              <svg viewBox="0 0 24 24" class="navBackIcon" aria-hidden="true" focusable="false">
+                <path d="M14 6 L8 12 L14 18" />
+              </svg>
+            </a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="section hero" aria-label="Proyecto: Dashboard OEE en Looker Studio">
+        <div class="container">
+          <div class="sectionHead">
+
+            <h1 class="heroTitle reveal">
+            <span class="accent">Business Intelligence</span> · OEE en Looker Studio
+            </h1>
+
+            <p class="sectionLead sectionLeadFull reveal">
+              Este proyecto representa la capa de Business Intelligence del caso OEE. 
+              Sobre el mismo modelo analítico (turno–línea–familia), diseñé un informe interactivo en Looker Studio 
+              orientado a dirección, separando claramente visión ejecutiva de diagnóstico técnico. 
+              El objetivo no es recalcular métricas, sino estructurar la exploración del dato y facilitar la toma de decisiones basada en KPIs consistentes.
+            </p>
+
+            <div class="projectsGrid">
+              <article class="projectCard reveal">
+                <p class="trustBig">Qué demuestra</p>
+                <p class="cardText">
+                  Diseño de una capa de reporting estructurada: definición correcta de agregaciones (media vs suma), coherencia entre KPIs, 
+                  uso de filtros interactivos y jerarquización visual para guiar el análisis desde la visión macro hasta el detalle operativo.
+                </p>
+              </article>
+
+              <article class="projectCard reveal">
+                <p class="trustBig">Componentes del informe</p>
+                <p class="cardText">
+                  KPIs ejecutivos (OEE, Availability, Performance) · Comparativa estructural entre líneas · 
+                  Análisis de mix por familia (runtime vs performance) · Filtros por línea y periodo · 
+                  Separación explícita entre diagnóstico y simulación de mejora.
+                </p>
+              </article>
+
+              <article class="projectCard reveal">
+                <p class="trustBig">Cómo lo usaría dirección</p>
+                <p class="cardText">
+                  Identificar rápidamente outliers de performance, validar si el gap proviene de disponibilidad o velocidad, 
+                  cuantificar el impacto potencial y priorizar acciones en función del peso operativo (runtime) y factibilidad técnica.
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-label="Dashboard (capturas)">
+        <div class="container">
+          <div class="sectionHead">
+            <p class="trustBig reveal">Dashboard (capturas)</p>
+            <p class="cardText reveal" style="margin-top:8px; color: rgba(255,255,255,.72);">
+              Vista ejecutiva del informe (capturas). Incluye los KPIs principales, segmentaciones y hallazgos clave.
+            </p>
+          </div>
+
+          <div class="projectsGrid projectStack" style="margin-top:18px;">
+            <article class="projectCard reveal">
+              <p class="miniTag miniTagGold">Vista 1 · Overview</p>
+              <p class="cardText" style="margin-top:10px;">
+                KPIs globales, evolución temporal y distribución por líneas/turnos.
+              </p>
+              <figure class="mt12">
+                <img
+                  src="assets/projects/sql-blood/Dashboard.png"
+                  alt="Dashboard OEE - Overview"
+                  loading="lazy"
+                />
+                <figcaption class="cardText" style="margin-top:10px; opacity:.75;">
+                  Overview general: OEE, Availability, Performance, Quality y tendencias.
+                </figcaption>
+              </figure>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="miniTag miniTagGold">Vista 2 · Drilldown</p>
+              <p class="cardText" style="margin-top:10px;">
+                Desglose por línea, familia de producto y pérdidas (downtime/performance).
+              </p>
+              <figure class="mt12">
+                <img
+                  src="assets/projects/sql-blood/Grafico.png"
+                  alt="Dashboard OEE - Drilldown por línea y producto"
+                  loading="lazy"
+                />
+                <figcaption class="cardText" style="margin-top:10px; opacity:.75;">
+                  Drilldown: comparación L1–L4, mix de producto y drivers de pérdida.
+                </figcaption>
+              </figure>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="miniTag miniTagGold">Vista 3 · Pérdidas y acciones</p>
+              <p class="cardText" style="margin-top:10px;">
+                Priorización de acciones: top pérdidas, frecuencia, impacto estimado y quick wins.
+              </p>
+              <figure class="mt12">
+                <img
+                  src="assets/projects/sql-blood/Filtro.png"
+                  alt="Dashboard OEE - Pérdidas y acciones"
+                  loading="lazy"
+                />
+                <figcaption class="cardText" style="margin-top:10px; opacity:.75;">
+                  Pérdidas: Pareto + acciones sugeridas por impacto.
+                </figcaption>
+              </figure>
+            </article>
+          </div>
+
+          <!-- CTA opcional (si quieres mantenerlo, pero sin embed) -->
+          <!--
+          <div class="primaryCtas" style="margin-top:16px;">
+            <a class="btn btnPrimary btnSm"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://lookerstudio.google.com/s/i8DZTOJq3PY">
+              Abrir informe (externo)
+            </a>
+          </div>
+          -->
+        </div>
+      </section>
+
+      <section class="section" aria-label="Notas de implementación">
+        <div class="container">
+          <div class="projectsGrid">
+            <article class="projectCard reveal">
+              <p class="trustBig">Arquitectura</p>
+              <p class="cardText">
+                Modelo analítico definido previamente en Google Sheets. Looker Studio actúa como capa de visualización y reporting, separando modelo y presentación.
+              </p>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="trustBig">Escalabilidad</p>
+              <p class="cardText">
+                Evolución natural: migrar el modelo a BigQuery como capa semántica y utilizar Looker Studio como front-end BI para mejorar rendimiento y control de acceso.
+              </p>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="trustBig">Explicación</p>
+              <p class="cardText">
+                Primero valido que las agregaciones sean correctas. Después separo visión ejecutiva de diagnóstico. 
+                Uso filtros para aislar el outlier y cruzo runtime con performance para identificar el driver estructural. 
+                Finalmente cuantifico el impacto potencial antes de proponer acciones.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footerInner">
+        <div class="footerRight">
+          <a class="footerLink" href="https://www.linkedin.com/in/marcos-medina-subero-971167247/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="footerLink" href="https://www.instagram.com/marcosmsubero/" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a class="footerLink" href="https://wa.me/34699616190" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="container footerBottom">
+        <p class="footerSmall">© <span id="year"></span> Marcos Medina Subero. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+
+    <script defer src="js/main.js"></script>
+  </body>
+</html>

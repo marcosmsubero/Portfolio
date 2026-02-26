@@ -1,0 +1,559 @@
+<!-- proyecto-sql-powerbi.html (ESTILO SENIOR · NARRATIVA PRO · SIN ACADEMIA) -->
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Marcos Medina Subero — Proyecto · SQL para PowerBI (Data)</title>
+    <meta
+      name="description"
+      content="Proyecto freelance (ámbito sanitario): diseño de esquema relacional en PostgreSQL para trazabilidad, integridad y control de inventario en donación de sangre."
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#0b1320" />
+    <link rel="canonical" href="proyecto-sql-powerbi.html" />
+
+    <meta property="og:title" content="Marcos Medina Subero — Proyecto · SQL para PowerBI" />
+    <meta
+      property="og:description"
+      content="Proyecto freelance sanitario: modelado relacional en PostgreSQL con restricciones, integridad referencial y consultas operativas."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="proyecto-sql-powerbi.html" />
+
+    <link rel="preload" href="css/styles.css" as="style" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="preload" href="css/data.css" as="style" />
+    <link rel="stylesheet" href="css/data.css" />
+  </head>
+
+  <body class="dataProject">
+    <a class="skip-link" href="#main">Saltar al contenido</a>
+
+    <header class="site-header" data-header>
+      <div class="container header-inner">
+        <a class="brand" href="index-data.html" aria-label="Ir al inicio (Data)">
+          <img
+            class="brandAvatar"
+            src="assets/images/foto_perfil.jpg"
+            alt="Foto de perfil de Marcos Subero"
+            width="36"
+            height="36"
+            loading="eager"
+            decoding="async"
+          />
+          <span class="brandText">Marcos Medina Subero</span>
+        </a>
+
+        <nav class="nav" aria-label="Navegación principal (Data)" data-nav>
+          <button
+            class="navToggle"
+            type="button"
+            aria-label="Abrir menú"
+            aria-expanded="false"
+            aria-controls="navMenu"
+            data-nav-toggle
+          >
+            <span class="navToggleBars" aria-hidden="true"></span>
+          </button>
+
+          <div class="navMenu navMenuData" id="navMenu" data-nav-menu>
+            <a class="navLink" href="index-data.html">Inicio</a>
+            <a class="navLink" href="perfil-data.html">Perfil</a>
+            <a class="navLink isActive" href="proyectos-data.html">Proyectos</a>
+            <a class="navLink" href="contacto-data.html">Contacto</a>
+
+            <a class="navBack" href="proyectos-data.html" aria-label="Volver a portada">
+              <svg viewBox="0 0 24 24" class="navBackIcon" aria-hidden="true" focusable="false">
+                <path d="M14 6 L8 12 L14 18" />
+              </svg>
+            </a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- HERO -->
+      <section class="section hero" aria-label="Proyecto: Modelado relacional sistema de donación">
+        <div class="container">
+          <div class="sectionHead">
+
+            <h1 class="heroTitle reveal">
+              Sistema relacional para gestión integral de <span class="accent">donaciones de sangre</span>
+            </h1>
+
+            <p class="sectionLead sectionLeadFull reveal">
+              Proyecto planteado como <b>servicio freelance</b> para una organización sanitaria (identidad reservada) que necesita digitalizar el ciclo completo de donación:
+              registro de donantes, trazabilidad de extracciones, control de caducidad, inventario por centro y validación de resultados clínicos.
+              El dataset es simulado por confidencialidad, pero replica restricciones, reglas de negocio y controles típicos de un entorno real.
+            </p>
+          </div>
+
+          <div class="projectsGrid">
+            <article class="projectCard reveal">
+              <p class="trustBig">Enfoque freelance</p>
+              <p class="cardText">
+                Diseñado para entregar valor rápido: esquema robusto, reglas críticas implementadas en base de datos, y consultas operativas listas para reporting y soporte.
+              </p>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="trustBig">Prioridad</p>
+              <p class="cardText">
+                Integridad y trazabilidad primero: restricciones, claves y defaults para reducir errores humanos y asegurar cumplimiento de reglas clínicas.
+              </p>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="trustBig">Salida</p>
+              <p class="cardText">
+                Esquema + consultas que responden a necesidades reales: segmentación de donantes, disponibilidad por centros, auditoría de roles y actividad del personal.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTEXTO / PROBLEMA / OBJETIVO -->
+      <section class="section" aria-label="Contexto y objetivo">
+        <div class="container">
+          <div class="projectsGrid">
+            <article class="projectCard reveal">
+              <p class="trustBig">Contexto</p>
+              <p class="cardText">
+                Organización sanitaria que requiere un sistema regional para la gestión integral de donaciones: registro de donantes, centros de extracción,
+                personal sanitario, análisis clínico y control de stock por tipo sanguíneo.
+              </p>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="trustBig">Problema</p>
+              <p class="cardText">
+                Garantizar trazabilidad completa, consistencia de datos clínicos y cumplimiento de reglas de negocio estrictas mediante validación estructural
+                en base de datos (no solo en la capa aplicación).
+              </p>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="trustBig">Objetivo</p>
+              <p class="cardText">
+                Diseñar un modelo relacional robusto que implemente dominios, restricciones CHECK, claves foráneas y valores por defecto,
+                asegurando integridad referencial y validación automática de reglas críticas.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- MI CONTRIBUCIÓN -->
+      <section class="section" aria-label="Mi contribución técnica">
+        <div class="container">
+          <div class="sectionHead">
+            <p class="trustBig reveal">Mi contribución</p>
+            <p class="sectionLead sectionLeadFull reveal">
+              Implementé el esquema completo en PostgreSQL incorporando validación estructural a nivel de base de datos para minimizar errores,
+              asegurar trazabilidad y entregar una base sólida para reporting posterior en PowerBI.
+            </p>
+          </div>
+
+          <div class="projectsGrid mt12">
+            <article class="projectCard reveal">
+              <p class="trustBig">Dominios</p>
+              <ul class="cardList">
+                <li>Creación de dominio <b>blood_type_dom</b> para restringir tipos sanguíneos válidos.</li>
+                <li>Reutilización del dominio en múltiples tablas para coherencia semántica.</li>
+              </ul>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="trustBig">Restricciones de negocio</p>
+              <ul class="cardList">
+                <li>CHECK constraints para <b>eligibility_status</b>, <b>role</b> y <b>test_result</b>.</li>
+                <li>Campos <b>email</b> definidos como UNIQUE donde aplica.</li>
+                <li>Control de valores clínicos críticos a nivel de tabla.</li>
+              </ul>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="trustBig">Integridad referencial</p>
+              <ul class="cardList">
+                <li>Claves foráneas entre donación, centro, donante y personal.</li>
+                <li>Primary Key compuesta en inventario (centro + tipo + resultado).</li>
+                <li>Default automático para fecha de expiración (+35 días).</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- IMPLEMENTACIÓN SQL -->
+      <section class="section">
+        <div class="container">
+          <div class="sectionHead">
+            <p class="trustBig">Implementación técnica</p>
+                <p class="sectionLead sectionLeadFull reveal">
+                Script principal de creación del esquema con validación estructural y restricciones clínicas.
+                </p>
+          </div>
+
+          <div class="projectStack mt12">
+            <article class="projectCard">
+              <p class="trustBig">DDL — Esquema y restricciones</p>
+
+              <div class="codeCard" style="max-height:420px; overflow:auto;">
+                <pre class="codeBlock"><code>CREATE SCHEMA IF NOT EXISTS erp;
+
+CREATE DOMAIN blood_type_dom AS VARCHAR(3)
+CHECK (VALUE IN ('A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'));
+
+CREATE TABLE erp.tb_donor (
+  donor_id SERIAL PRIMARY KEY,
+  name VARCHAR(40) NOT NULL,
+  address VARCHAR(100) NOT NULL,
+  city VARCHAR(50) NOT NULL,
+  postal_code CHAR(5) NOT NULL,
+  email VARCHAR(100) NOT NULL UNIQUE,
+  date_of_birth DATE NOT NULL,
+  blood_type blood_type_dom NOT NULL,
+  eligibility_status VARCHAR(40) NOT NULL,
+  registration_date DATE NOT NULL DEFAULT CURRENT_DATE,
+  last_donation DATE,
+  CHECK (eligibility_status IN
+    ('Eligible','Temporarily Deferred','Permanently Deferred','Pending Review'))
+);
+
+CREATE TABLE erp.tb_blood_center (
+  blood_center_id CHAR(3) PRIMARY KEY,
+  name VARCHAR(40) NOT NULL UNIQUE,
+  address VARCHAR(100) NOT NULL,
+  city VARCHAR(50) NOT NULL,
+  postal_code CHAR(5) NOT NULL
+);
+
+CREATE TABLE erp.tb_staff (
+  staff_id SERIAL PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  role VARCHAR(50) NOT NULL,
+  email VARCHAR(100) NOT NULL UNIQUE,
+  CHECK (role IN ('Doctor','Nurse','Lab Technician','Receptionist'))
+);
+
+CREATE TABLE erp.tb_donation (
+  donation_id SERIAL PRIMARY KEY,
+  blood_center_id CHAR(3) NOT NULL REFERENCES erp.tb_blood_center(blood_center_id),
+  donor_id INTEGER NOT NULL REFERENCES erp.tb_donor(donor_id),
+  volume_ml NUMERIC(6,2) NOT NULL,
+  staff_id INTEGER NOT NULL REFERENCES erp.tb_staff(staff_id),
+  extraction_date DATE NOT NULL DEFAULT CURRENT_DATE,
+  expiration_date DATE NOT NULL DEFAULT (CURRENT_DATE + 35),
+  test_result VARCHAR(7) NOT NULL DEFAULT 'PENDING',
+  CHECK (test_result IN ('VALID','INVALID','PENDING'))
+);
+
+CREATE TABLE erp.tb_blood_stock (
+  blood_center_id CHAR(3) NOT NULL REFERENCES erp.tb_blood_center(blood_center_id),
+  blood_type blood_type_dom NOT NULL,
+  test_result VARCHAR(7) NOT NULL,
+  quantity_ml NUMERIC(8,2) NOT NULL DEFAULT 0,
+  PRIMARY KEY (blood_center_id, blood_type, test_result),
+  CHECK (test_result IN ('VALID','INVALID','PENDING'))
+);</code></pre>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONSULTAS + EVIDENCIA -->
+      <section class="section">
+        <div class="container">
+
+          <div class="sectionHead">
+            <p class="trustBig">Consultas operativas con evidencia</p>
+          </div>
+
+          <div class="projectStack mt12">
+
+            <!-- (a) -->
+            <article class="projectCard">
+              <p class="trustBig">(a) Segmentación de donantes del grupo A+/A- aptos para extracción</p>
+
+              <div class="codeCard">
+                <pre class="codeBlock"><code>SELECT
+  d.donor_id,
+  d.name,
+  d.blood_type,
+  d.eligibility_status,
+  d.registration_date
+FROM erp.tb_donor d
+WHERE d.blood_type IN ('A+', 'A-')
+  AND d.eligibility_status = 'Eligible'
+  AND EXTRACT(YEAR FROM d.registration_date) IN (2023, 2024)
+ORDER BY d.registration_date DESC;</code></pre>
+              </div>
+
+              <img src="assets/projects/sql-blood/a-donors-filter.png" alt="Resultado consulta A+/A-" />
+            </article>
+
+            <!-- (b) -->
+            <article class="projectCard">
+              <p class="trustBig">(b) Stock O- de más de 8 bolsas</p>
+
+              <div class="codeCard">
+                <pre class="codeBlock"><code>SELECT
+  bc.blood_center_id,
+  bc.name,
+  bc.city,
+  bs.blood_type,
+  bs.quantity_ml,
+  FLOOR(bs.quantity_ml / 450.0) AS bags_available
+FROM erp.tb_blood_stock bs
+JOIN erp.tb_blood_center bc
+  ON bc.blood_center_id = bs.blood_center_id
+WHERE bs.blood_type = 'O-'
+  AND bs.test_result = 'VALID'
+  AND FLOOR(bs.quantity_ml / 450.0) >= 8
+ORDER BY bags_available DESC;</code></pre>
+              </div>
+
+              <img src="assets/projects/sql-blood/b-stock-o-negative.png" alt="Resultado stock O-" />
+            </article>
+
+            <!-- (c) -->
+            <article class="projectCard">
+              <p class="trustBig">(c) Donaciones por nombre (Ejemplo Benjamin)</p>
+
+              <div class="codeCard">
+                <pre class="codeBlock"><code>SELECT
+  dn.donation_id,
+  dr.name,
+  dr.blood_type,
+  dn.extraction_date,
+  dn.test_result,
+  st.name
+FROM erp.tb_donation dn
+JOIN erp.tb_donor dr ON dr.donor_id = dn.donor_id
+JOIN erp.tb_staff st ON st.staff_id = dn.staff_id
+WHERE dr.name LIKE 'Benjamin%'
+ORDER BY dr.name ASC;</code></pre>
+              </div>
+
+              <img src="assets/projects/sql-blood/c-benjamin-donations.png" alt="Resultado Benjamin" />
+            </article>
+
+            <!-- (d) -->
+            <article class="projectCard">
+              <p class="trustBig">(d) Auditoría de roles no autorizados</p>
+
+              <div class="codeCard">
+                <pre class="codeBlock"><code>SELECT
+  s.staff_id,
+  s.name,
+  s.role,
+  d.donation_id,
+  d.volume_ml
+FROM erp.tb_staff s
+LEFT JOIN erp.tb_donation d
+  ON d.staff_id = s.staff_id
+WHERE s.role IN ('Lab Technician', 'Receptionist')
+ORDER BY s.staff_id ASC;</code></pre>
+              </div>
+
+              <img src="assets/projects/sql-blood/d-staff-audit.png" alt="Resultado auditoría roles" />
+            </article>
+
+            <!-- (e) -->
+            <article class="projectCard">
+              <p class="trustBig">(e) Resumen enfermeros con más de 20 extracciones</p>
+
+              <div class="codeCard">
+                <pre class="codeBlock"><code>SELECT
+  s.name,
+  COUNT(d.donation_id) AS total_extractions,
+  SUM(d.volume_ml) AS total_volume_ml,
+  MAX(d.extraction_date) AS last_extraction_date
+FROM erp.tb_staff s
+JOIN erp.tb_donation d
+  ON d.staff_id = s.staff_id
+WHERE s.role = 'Nurse'
+GROUP BY s.name
+HAVING COUNT(d.donation_id) > 20
+ORDER BY total_extractions DESC, total_volume_ml DESC;</code></pre>
+              </div>
+
+              <img src="assets/projects/sql-blood/e-nurse-summary.png" alt="Resumen Nurses" />
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- GENERACIÓN DE ETIQUETA DONATION_CODE -->
+        <section class="section" aria-label="Generación de etiqueta de donación">
+        <div class="container">
+
+            <div class="sectionHead">
+            <p class="trustBig reveal">Generación de etiqueta identificativa (donation_code)</p>
+            <p class="sectionLead sectionLeadFull reveal">
+                Se incorporó un nuevo campo en la tabla <b>tb_donation</b> para generar una etiqueta automática
+                tras conocer el resultado del análisis clínico. La codificación permite identificar rápidamente
+                cada bolsa válida e invalidar explícitamente aquellas no aptas para uso clínico.
+            </p>
+            </div>
+
+            <div class="projectStack mt12">
+
+            <article class="projectCard reveal">
+                <p class="trustBig">Regla de negocio implementada</p>
+                <p class="cardText">
+                • Si <b>test_result = VALID</b>: código compuesto por ID (6 dígitos) + fecha extracción + fecha expiración.  
+                • Si <b>test_result = INVALID</b>: ID (6 dígitos) + "***INVALID***".  
+                • Si el resultado está pendiente: valor NULL.
+                </p>
+
+                <div class="codeCard" style="max-height:420px; overflow:auto;">
+        <pre class="codeBlock"><code>ALTER TABLE erp.tb_donation
+        ADD COLUMN donation_code VARCHAR(30);
+
+        UPDATE erp.tb_donation AS d
+        SET donation_code = CASE
+            WHEN d.test_result = 'VALID' THEN
+                LPAD(d.donation_id::text, 6, '0')
+                || '-' || TO_CHAR(d.extraction_date, 'DDMMYY')
+                || '-' || TO_CHAR(d.expiration_date, 'DDMMYY')
+            WHEN d.test_result = 'INVALID' THEN
+                LPAD(d.donation_id::text, 6, '0') || '***INVALID***'
+            ELSE
+                NULL
+        END;
+
+        SELECT
+        donation_id,
+        test_result,
+        extraction_date,
+        expiration_date,
+        donation_code
+        FROM erp.tb_donation
+        ORDER BY donation_id
+        LIMIT 20;</code></pre>
+                </div>
+
+                <figure class="mt12">
+                <img
+                    src="assets/projects/sql-blood/donation-code-proof.png"
+                    alt="Validación visual del campo donation_code generado automáticamente"
+                    loading="lazy"
+                    decoding="async"
+                />
+                </figure>
+            </article>
+
+            <article class="projectCard reveal">
+                <p class="trustBig">Operaciones de validación y control</p>
+                <p class="cardText">
+                Se creó una tabla copia para pruebas de integridad, simulando eliminaciones,
+                inserciones y detección de inconsistencias entre tablas originales y copia.
+                </p>
+
+                <div class="codeCard" style="max-height:420px; overflow:auto;">
+        <pre class="codeBlock"><code>DROP TABLE IF EXISTS erp.tb_donation_copy;
+        CREATE TABLE erp.tb_donation_copy AS
+        SELECT *
+        FROM erp.tb_donation;
+
+        DELETE FROM erp.tb_donation_copy
+        WHERE volume_ml = 0;
+
+        DELETE FROM erp.tb_donation_copy
+        WHERE test_result = 'INVALID'
+        AND blood_center_id IN ('C01','C03','C05');
+
+        SELECT d.*
+        FROM erp.tb_donation AS d
+        LEFT JOIN erp.tb_donation_copy AS c
+        ON c.donation_id = d.donation_id
+        WHERE c.donation_id IS NULL
+        ORDER BY d.donation_id;
+
+        INSERT INTO erp.tb_donation_copy
+        (donation_id, blood_center_id, donor_id, volume_ml, staff_id,
+        extraction_date, expiration_date, test_result)
+        VALUES
+        (500, 'C04', 7,   435.44, 10, TO_DATE('21-07-2025','DD-MM-YYYY'), TO_DATE('25-08-2025','DD-MM-YYYY'), 'PENDING'),
+        (501, 'C04', 100, 432.66, 10, TO_DATE('21-07-2025','DD-MM-YYYY'), TO_DATE('25-08-2025','DD-MM-YYYY'), 'PENDING');
+
+        SELECT c.*
+        FROM erp.tb_donation_copy AS c
+        LEFT JOIN erp.tb_donation AS d
+        ON d.donation_id = c.donation_id
+        WHERE d.donation_id IS NULL
+        ORDER BY c.donation_id;</code></pre>
+                </div>
+
+                <figure class="mt12">
+                <img
+                    src="assets/projects/sql-blood/donation_code_extended.png"
+                    alt="Validación visual del campo donation_code generado automáticamente"
+                    loading="lazy"
+                    decoding="async"
+                />
+                </figure>
+            </article>
+
+            <article class="projectCard reveal">
+                <p class="trustBig">Vista estratégica — Donantes universales</p>
+                <p class="cardText">
+                Creación de vista orientada a reporting para identificar donantes universales (O-),
+                priorizando elegibilidad clínica y facilitando explotación posterior en PowerBI.
+                </p>
+
+                <div class="codeCard" style="max-height:320px; overflow:auto;">
+        <pre class="codeBlock"><code>CREATE OR REPLACE VIEW erp.donor_universal AS
+        SELECT
+            d.donor_id,
+            d.name            AS donor_name,
+            d.blood_type,
+            d.email,
+            d.last_donation
+        FROM erp.tb_donor AS d
+        WHERE d.blood_type = 'O-'
+        AND d.eligibility_status IN ('Eligible', 'Pending Review');
+
+        SELECT *
+        FROM erp.donor_universal
+        ORDER BY last_donation DESC NULLS LAST, donor_id;</code></pre>
+                </div>
+                <figure class="mt12">
+                <img
+                    src="assets/projects/sql-blood/donor_universal_view.png"
+                    alt="Validación visual del campo donation_code generado automáticamente"
+                    loading="lazy"
+                    decoding="async"
+                />
+                </figure>
+            </article>
+
+            </div>
+        </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footerInner">
+        <div class="footerRight">
+          <a class="footerLink" href="https://www.linkedin.com/in/marcos-medina-subero-971167247/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="footerLink" href="https://www.instagram.com/marcosmsubero/" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a class="footerLink" href="https://wa.me/34699616190?text=Hola%20Marcos%2C%20me%20interesa%20tu%20proyecto%20de%20modelado%20SQL%20(ámbito%20sanitario)." target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="container footerBottom">
+        <p class="footerSmall">© <span id="year"></span> Marcos Medina Subero. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+
+    <script defer src="js/main.js"></script>
+  </body>
+</html>

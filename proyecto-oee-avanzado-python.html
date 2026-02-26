@@ -1,0 +1,350 @@
+<!-- proyecto-oee-avanzado-python.html (NUEVO · MISMO ESTILO QUE proyecto-eficiencia-data.html · NARRATIVA SENIOR) -->
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Marcos Medina Subero — Proyecto · OEE avanzado (Python) · XGBoost + SHAP (Data)</title>
+    <meta
+      name="description"
+      content="Caso simulado de analítica industrial: modelos explicativos para downtime_rate y perf_gap con XGBoost + SHAP, validación temporal y análisis local por segmento (L4 · turno M · Envase 250ml)."
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#0b1320" />
+    <link rel="canonical" href="proyecto-oee-avanzado-python.html" />
+
+    <meta property="og:title" content="Marcos Medina Subero — Proyecto · OEE avanzado (Python) · XGBoost + SHAP" />
+    <meta
+      property="og:description"
+      content="Modelos explicativos industriales para downtime_rate y perf_gap con split temporal, pipeline robusto y SHAP global + local por segmento."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="proyecto-oee-avanzado-python.html" />
+
+    <link rel="preload" href="css/styles.css" as="style" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="preload" href="css/data.css" as="style" />
+    <link rel="stylesheet" href="css/data.css" />
+  </head>
+
+  <body class="dataProject">
+    <a class="skip-link" href="#main">Saltar al contenido</a>
+
+    <header class="site-header" data-header>
+      <div class="container header-inner">
+        <a class="brand" href="index-data.html" aria-label="Ir al inicio (Data)">
+          <img
+            class="brandAvatar"
+            src="assets/images/foto_perfil.jpg"
+            alt="Foto de perfil de Marcos Subero"
+            width="36"
+            height="36"
+            loading="eager"
+            decoding="async"
+          />
+          <span class="brandText">Marcos Medina Subero</span>
+        </a>
+
+        <nav class="nav" aria-label="Navegación principal (Data)" data-nav>
+          <button
+            class="navToggle"
+            type="button"
+            aria-label="Abrir menú"
+            aria-expanded="false"
+            aria-controls="navMenu"
+            data-nav-toggle
+          >
+            <span class="navToggleBars" aria-hidden="true"></span>
+          </button>
+
+          <div class="navMenu navMenuData" id="navMenu" data-nav-menu>
+            <a class="navLink" href="index-data.html">Inicio</a>
+            <a class="navLink" href="perfil-data.html">Perfil</a>
+            <a class="navLink isActive" href="proyectos-data.html">Proyectos</a>
+            <a class="navLink" href="contacto-data.html">Contacto</a>
+
+            <a class="navBack" href="proyectos-data.html" aria-label="Volver a portada">
+              <svg viewBox="0 0 24 24" class="navBackIcon" aria-hidden="true" focusable="false">
+                <path d="M14 6 L8 12 L14 18" />
+              </svg>
+            </a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- HERO -->
+      <section class="section hero" aria-label="Proyecto: OEE avanzado en Python con modelos explicativos">
+        <div class="container">
+          <div class="sectionHead">
+
+            <h1 class="heroTitle reveal">
+              Modelos explicativos para <span class="accent">Downtime</span> y <span class="accent">Performance</span> en OEE (XGBoost + SHAP)
+            </h1>
+
+            <p class="sectionLead sectionLeadFull reveal">
+              Este proyecto es la evolución natural de los Proyectos 1 y 2: del diagnóstico descriptivo (OEE y cruces por mix) y la visualización ejecutiva,
+              a una capa de <b>explicabilidad</b> que permite priorizar acciones con evidencia cuantitativa.
+              Entrené dos modelos (downtime_rate y perf_gap) con validación temporal, y generé SHAP global y local para traducir señales del modelo a hipótesis operativas
+              y un plan de acción aplicable en planta.
+              El dataset es simulado para preservar confidencialidad, pero replica granularidad real (turno–línea–familia) y métricas típicas de producción.
+            </p>
+
+            <div class="projectsGrid">
+              <article class="projectCard reveal">
+                <p class="trustBig">Objetivo</p>
+                <p class="cardText">
+                  Explicar qué variables empujan el <b>downtime_rate</b> y el <b>perf_gap</b>, y convertir el resultado en un plan de mejora priorizado
+                  (quick wins vs acciones técnicas) con criterio de impacto.
+                </p>
+              </article>
+
+              <article class="projectCard reveal">
+                <p class="trustBig">Entregables</p>
+                <p class="cardText">
+                  Pipeline reproducible + modelos por target + SHAP global (ranking agregado) + SHAP local por segmento crítico (L4 · M · Envase 250ml)
+                  + reporte interpretativo estilo entrevista.
+                </p>
+              </article>
+
+              <article class="projectCard reveal">
+                <p class="trustBig">Hallazgo clave</p>
+                <p class="cardText">
+                  En el segmento crítico, la señal dominante apunta a <b>inestabilidad de ciclo / microparadas</b> (obs_cycle_sec) y caída de output (produced_units),
+                  más que a paradas largas declaradas como downtime.
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RESUMEN EJECUTIVO -->
+      <section class="section" aria-label="Resumen ejecutivo">
+        <div class="container">
+          <div class="aboutGrid">
+            <div class="aboutCopy">
+              <p class="trustBig reveal">Resumen ejecutivo</p>
+
+              <p class="sectionLead sectionLeadFull reveal">
+                Los Proyectos 1 y 2 permiten detectar y visualizar un gap (por ejemplo, L4 como outlier). Este Proyecto 3 responde a la pregunta operativa:
+                “¿qué está empujando el problema en términos de variables medibles?”.
+                Para ello, entrené dos modelos explicativos con validación temporal y generé SHAP global (drivers más influyentes) y SHAP local
+                (explicación por observación en un segmento crítico).
+                El resultado es accionable: separar pérdidas por <b>frecuencia vs duración</b>, distinguir <b>microparadas / speed losses</b> de downtime declarado,
+                y priorizar contramedidas con un playbook industrial.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MI CONTRIBUCIÓN -->
+      <section class="section" aria-label="Mi contribución">
+        <div class="container">
+          <div class="sectionHead">
+            <p class="trustBig reveal">Planteamiento</p>
+          </div>
+
+          <div class="projectsGrid mt12">
+            <article class="projectCard reveal">
+              <p class="trustBig">Modelado y targets</p>
+              <ul class="cardList">
+                <li>Definición de targets operativos: <b>downtime_rate</b> y <b>perf_gap</b>.</li>
+                <li>Separación de objetivos para evitar mezclar mecanismos (paradas vs velocidad).</li>
+                <li>Elección de XGBoost por capacidad de capturar no linealidades típicas (mix, régimen, saturación).</li>
+              </ul>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="trustBig">Rigor temporal</p>
+              <ul class="cardList">
+                <li>Validación con <b>TimeSeriesSplit</b> para evitar leakage (entorno industrial = series y drift).</li>
+                <li>Evaluación en el último fold para simular despliegue (train pasado → test futuro).</li>
+              </ul>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="trustBig">Explicabilidad y decisión</p>
+              <ul class="cardList">
+                <li>SHAP global con ranking <b>agregado</b> (reduce ruido por one-hot).</li>
+                <li>SHAP local para segmento crítico (L4 · M · 250ml) y “peor caso” con waterfall.</li>
+                <li>Traducción a hipótesis operativas + plan de acción y validación (piloto/A-B).</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- METODOLOGÍA -->
+      <section class="section" aria-label="Metodología">
+        <div class="container">
+          <div class="projectsGrid">
+            <article class="projectCard reveal">
+              <p class="trustBig">Paso 1 · Construcción de targets</p>
+              <p class="cardText">
+                Separación explícita de mecanismos: downtime_rate (paradas) vs perf_gap (pérdida de velocidad).
+              </p>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="trustBig">Paso 2 · Pipeline y split temporal</p>
+              <p class="cardText">
+                ColumnTransformer + OneHotEncoder para categorías y validación con TimeSeriesSplit. Evita leakage y simula despliegue.
+              </p>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="trustBig">Paso 3 · SHAP global</p>
+              <p class="cardText">
+                Ranking de drivers por mean(|SHAP|) y agregación de one-hot para interpretación de negocio (turno/línea/familia).
+              </p>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="trustBig">Paso 4 · SHAP local (segmento)</p>
+              <p class="cardText">
+                Análisis en el segmento crítico L4 · turno M · Envase 250ml: top peores casos, drivers consistentes y waterfall del peor caso para decisión.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- EVIDENCIA / VISUALES -->
+      <section class="section" aria-label="Evidencia y visualizaciones">
+        <div class="container">
+          <div class="sectionHead">
+            <p class="eyebrow reveal">Evidencia · Explicabilidad · Acción</p>
+            <h2 class="heroTitle reveal">Visualizaciones clave</h2>
+          </div>
+
+          <div class="projectsGrid">
+            <article class="projectCard reveal">
+              <p class="trustBig">1) SHAP global · Downtime rate</p>
+              <p class="cardText">Ranking agregado de drivers que más empujan el downtime_rate (lectura ejecutiva).</p>
+              <figure class="mt12">
+                <img
+                  src="assets/images/oee-python/downtime_rate_shap_global_bar.png"
+                  alt="SHAP global downtime_rate: ranking agregado de drivers"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption class="cardText">Drivers globales para downtime_rate (agregado para reducir ruido de one-hot).</figcaption>
+              </figure>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="trustBig">2) SHAP global · Performance gap</p>
+              <p class="cardText">Ranking agregado de drivers que empujan el perf_gap (pérdida de velocidad).</p>
+              <figure class="mt12">
+                <img
+                  src="assets/images/oee-python/perf_gap_shap_global_bar.png"
+                  alt="SHAP global perf_gap: ranking agregado de drivers"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption class="cardText">Drivers globales para perf_gap (orienta qué palancas mover primero).</figcaption>
+              </figure>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="trustBig">3) SHAP local · Segmento crítico</p>
+              <p class="cardText">
+                Waterfall del peor caso dentro del segmento L4 · M · Envase 250ml para entender qué empuja hacia arriba/abajo la predicción.
+              </p>
+              <figure class="mt12">
+                <img
+                  src="assets/images/oee-python/downtime_rate_segment_worst_waterfall.png"
+                  alt="SHAP local (waterfall): peor caso en el segmento L4 turno M Envase 250ml"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption class="cardText">Explicación local: el “por qué” de una observación crítica (segmento).</figcaption>
+              </figure>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="trustBig">4) Notebook / script reproducible</p>
+              <p class="cardText">
+                Evidencia de ejecución: pipeline + split temporal + generación automática de outputs.
+              </p>
+              <figure class="mt12">
+                <img
+                  src="assets/images/oee-python/notebook-outputs.png"
+                  alt="Captura de notebook o script de ejecución reproducible"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- RESULTADOS / DECISIÓN -->
+      <section class="section" aria-label="Resultados y decisión">
+        <div class="container">
+          <div class="projectsGrid">
+            <article class="projectCard reveal">
+              <p class="trustBig">Drivers (global)</p>
+              <p class="cardText">
+                En downtime_rate, los drivers dominantes son <b>produced_units</b>, <b>obs_cycle_sec</b> y <b>shift</b>. La lectura ejecutiva:
+                el gap se explica más por estabilidad de ciclo/throughput y patrón operativo por turno que por una única “causa de parada” declarada.
+              </p>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="trustBig">Drivers (segmento)</p>
+              <p class="cardText">
+                En L4 · turno M · Envase 250ml, los drivers consistentes son obs_cycle_sec, produced_units y shift.
+                Traducción industrial: pérdidas por <b>microparadas / speed losses</b>, caída de output y patrón de ejecución por turno.
+              </p>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="trustBig">Hipótesis operativas</p>
+              <p class="cardText">
+                1) Microparadas y variabilidad del ciclo (picos de obs_cycle_sec) <br />
+                2) Arranques/transiciones y estándar de trabajo en turno M <br />
+                3) Subregistro: pérdida de output sin subida proporcional de downtime registrado <br />
+                4) Deriva temporal (date_ordinal) alineada con cambios (mantenimiento/material/personas)
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONCLUSIÓN -->
+      <section class="section" aria-label="Conclusión">
+        <div class="container">
+          <div class="sectionHead">
+            <p class="trustBig reveal">Conclusión</p>
+            <p class="sectionLead sectionLeadFull reveal">
+              Este proyecto demuestra el paso de “ver el problema” (dashboard) a “entender qué lo empuja” (drivers explicables) y “cómo actuar” (plan priorizado).
+              La combinación de validación temporal + SHAP global/local convierte ML en una poderosa herramienta de decisión.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footerInner">
+        <div class="footerRight">
+          <a class="footerLink" href="https://www.linkedin.com/in/marcos-medina-subero-971167247/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="footerLink" href="https://www.instagram.com/marcosmsubero/" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a class="footerLink" href="https://wa.me/34699616190?text=Hola%20Marcos%2C%20me%20interesa%20tu%20proyecto%20de%20OEE%20avanzado%20en%20Python%20(XGBoost%20%2B%20SHAP)." target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="container footerBottom">
+        <p class="footerSmall">© <span id="year"></span> Marcos Medina Subero. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+
+    <script defer src="js/main.js"></script>
+  </body>
+</html>
