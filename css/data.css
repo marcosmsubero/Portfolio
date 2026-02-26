@@ -964,3 +964,241 @@ body:has(section[aria-label="Proyectos Sencillos de Data Analytics en Operacione
     break-before: page;
   }
 }
+
+/* =========================================================
+   PRINT A4 — TODO EL PORTFOLIO, MANTIENE ESTILO
+   (pegar al FINAL del CSS)
+   ========================================================= */
+
+@page{
+  size: A4;
+  margin: 1.2cm;
+}
+
+@media print{
+
+  /* Fuerza impresión de colores y fondos */
+  html, body{
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Sin animaciones/efectos que alteren layout */
+  *,
+  *::before,
+  *::after{
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Mantén tu background original */
+  body{
+    background:
+      radial-gradient(1000px 700px at 12% 0%, rgba(100,150,255,0.08), transparent 60%),
+      radial-gradient(900px 600px at 88% 12%, rgba(100,150,255,0.06), transparent 55%),
+      radial-gradient(900px 600px at 50% 95%, rgba(100,150,255,0.05), transparent 55%),
+      linear-gradient(180deg, var(--bg0), var(--bg1)) !important;
+  }
+
+  /* Tipografía un poco más compacta para que quepa “todo” */
+  body{
+    font-size: 10.5pt !important;
+    line-height: 1.5 !important;
+  }
+  h1{ font-size: 20pt !important; }
+  h2{ font-size: 15pt !important; }
+  h3{ font-size: 12.5pt !important; }
+
+  /* Quita hover en impresión */
+  .card:hover,
+  .projectCard:hover,
+  .trustItem:hover{
+    border-color: rgba(100,150,255,0.18) !important;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+
+  /* Sombras: reduce para evitar “manchas” en PDF (mantiene el look) */
+  .card,
+  .heroCard,
+  .projectCard,
+  .trustItem{
+    box-shadow: 0 10px 28px rgba(0,0,0,0.25) !important;
+  }
+
+  /* Mantén cards glass + bordes */
+  .card,
+  .heroCard,
+  .projectCard,
+  .trustItem{
+    background: linear-gradient(145deg, rgba(20, 38, 70, 0.85), rgba(14, 26, 48, 0.95)) !important;
+    border: 1px solid rgba(100,150,255,0.18) !important;
+  }
+
+  /* Hero executive: mantener estilo pero evitar demasiado alto */
+  .executive-hero{
+    padding: 48px 0 28px 0 !important;
+  }
+  .executive-hero h1{
+    margin-bottom: 10px !important;
+  }
+  .hero-subtitle{
+    margin-bottom: 14px !important;
+  }
+
+  /* Evita que la silueta tape texto o se imprima rara */
+  .dataProject #sobre-mi .silhouette{
+    opacity: .18 !important;
+    mix-blend-mode: normal !important;
+    filter: grayscale(100%) contrast(70%) brightness(130%) !important;
+  }
+
+  /* Elementos interactivos que no aportan en PDF */
+  .filtersWrap,
+  .searchBox,
+  .uxHint{
+    display: none !important;
+  }
+
+  /* Botones/CTAs: en PDF suelen sobrar (si los quieres, comenta este bloque) */
+  .btn,
+  .btnPrimary,
+  .btnSm,
+  .primaryCtas{
+    display: none !important;
+  }
+
+  /* Embeds/iframes suelen salir en blanco o romper paginado */
+  .lookerEmbed,
+  iframe{
+    display: none !important;
+  }
+
+  /* Control de paginado: evita cortes en cards e imágenes */
+  section,
+  .section,
+  .card,
+  .heroCard,
+  .projectCard,
+  .trustItem,
+  figure,
+  img{
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  h1, h2, h3,
+  .pageTitle,
+  .sectionTitle,
+  .trustBig{
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  /* Secciones: menos padding para que entre todo */
+  .section{
+    padding: 28px 0 !important;
+  }
+  .dataProject .section{
+    padding: 28px 0 !important;
+  }
+  .dataProject .section.hero{
+    padding: 52px 0 28px !important;
+  }
+
+  /* Reduce separación entre secciones consecutivas en impresión */
+  .section + .section{
+    padding-top: 18px !important;
+  }
+
+  /* Grids: en A4, mejor 1 columna para evitar cortes horizontales */
+  .projectsGrid,
+  .cardsGrid,
+  .trustBar,
+  .hero-metrics{
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  /* Evidencia/visualizaciones: ya es columna, solo compacta */
+  .dataProject .section[aria-label="Evidencia y visualizaciones"] .projectsGrid{
+    gap: 18px !important;
+  }
+  .dataProject .section[aria-label="Evidencia y visualizaciones"] .projectCard{
+    padding: 18px !important;
+  }
+
+  /* Imágenes y figuras */
+  img{
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Código: que no “corte” el ancho */
+  .codeCard{
+    max-height: none !important;
+    overflow: visible !important;
+  }
+  pre, code{
+    white-space: pre-wrap !important;
+    word-break: break-word !important;
+  }
+
+  /* Links: en PDF es útil mostrar URL (si NO lo quieres, comenta) */
+  a::after{
+    content: " (" attr(href) ")";
+    font-size: 8pt;
+    opacity: .75;
+  }
+
+  /* Saltos manuales opcionales */
+  .page-break{
+    page-break-before: always;
+    break-before: page;
+  }
+}
+
+/* =========================================================
+   PRINT — SILUETA ESTILO CENTRADO (A4)
+   ========================================================= */
+
+@media print{
+
+  .silhouette{
+    position: absolute !important;
+    left: 50% !important;
+    bottom: 0 !important;
+    transform: translateX(-50%) scale(1.18) !important;
+
+    width: min(860px, 92vw) !important;
+    height: min(980px, 100vh) !important;
+
+    background: url("assets/images/foto_perfil_cut.png") center bottom / contain no-repeat !important;
+
+    filter: grayscale(100%) contrast(85%) brightness(115%) !important;
+    opacity: .60 !important;
+    mix-blend-mode: soft-light !important;
+
+    pointer-events: none !important;
+    z-index: 0 !important;
+  }
+
+  /* Asegura que el contenido esté por encima */
+  #sobre-mi .aboutGrid,
+  #sobre-mi .sectionHead,
+  #sobre-mi .sectionLead,
+  #sobre-mi .sectionLeadFull{
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Evita que la silueta empuje el layout */
+  #sobre-mi{
+    position: relative !important;
+    overflow: hidden !important;
+    page-break-inside: avoid;
+  }
+
+}
