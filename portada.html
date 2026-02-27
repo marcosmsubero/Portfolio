@@ -214,12 +214,12 @@ body{
   }
 
   .coverEnter{
-    position:relative;
-    left:auto;
-    bottom:auto;
-    transform:none;
-    margin-top:10px;
-  }
+  position:absolute;
+  left:50%;
+  bottom:12px;              /* distancia desde base de silueta */
+  transform:translateX(-50%);
+  margin:0;
+}
 }
 
 </style>
@@ -253,7 +253,7 @@ body{
     </p>
   </div>
 
-  <div class="silhouette"></div>
+  <div class="silhouette">
 
   <a href="index-data.html" class="coverEnter">
     Conectar · Ver servicios ↳
