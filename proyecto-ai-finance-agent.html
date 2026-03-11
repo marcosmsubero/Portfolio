@@ -1,1 +1,423 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <title>Marcos Medina Subero — Proyecto · Asistente financiero con IA en n8n</title>
+    <meta
+      name="description"
+      content="Proyecto de automatización con n8n, agentes IA, memoria conversacional y herramientas conectadas a base de datos para consulta e inserción de gastos y presupuestos."
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#0b1320" />
+    <link rel="canonical" href="proyecto-ai-finance-agent.html" />
+
+    <meta property="og:title" content="Marcos Medina Subero — Proyecto · Asistente financiero con IA en n8n" />
+    <meta
+      property="og:description"
+      content="Agente financiero con n8n, memoria conversacional, tools conectadas y arquitectura orientada a automatización real y portfolio."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="proyecto-ai-finance-agent.html" />
+
+    <link rel="preload" href="css/styles.css" as="style" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="preload" href="css/data.css" as="style" />
+    <link rel="stylesheet" href="css/data.css" />
+  </head>
+
+  <body class="dataProject">
+    <a class="skip-link" href="#main">Saltar al contenido</a>
+
+    <header class="site-header" data-header>
+      <div class="container header-inner">
+        <a class="brand" href="index-data.html" aria-label="Ir al inicio (Data)">
+          <img
+            class="brandAvatar"
+            src="assets/images/foto_perfil.jpg"
+            alt="Foto de perfil de Marcos Subero"
+            width="36"
+            height="36"
+            loading="eager"
+            decoding="async"
+          />
+          <span class="brandText">Marcos Medina Subero</span>
+        </a>
+
+        <nav class="nav" aria-label="Navegación principal (Data)" data-nav>
+          <button
+            class="navToggle"
+            type="button"
+            aria-label="Abrir menú"
+            aria-expanded="false"
+            aria-controls="navMenu"
+            data-nav-toggle
+          >
+            <span class="navToggleBars" aria-hidden="true"></span>
+          </button>
+
+          <div class="navMenu navMenuData" id="navMenu" data-nav-menu>
+            <a class="navLink" href="index-data.html">Inicio</a>
+            <a class="navLink" href="perfil-data.html">Perfil</a>
+            <a class="navLink isActive" href="proyectos-data.html">Proyectos</a>
+            <a class="navLink" href="contacto-data.html">Contacto</a>
+
+            <a class="navBack" href="proyectos-data.html" aria-label="Volver a proyectos">
+              <svg viewBox="0 0 24 24" class="navBackIcon" aria-hidden="true" focusable="false">
+                <path d="M14 6 L8 12 L14 18" />
+              </svg>
+            </a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="section hero" aria-label="Proyecto: Asistente financiero con IA en n8n">
+        <div class="container">
+          <div class="sectionHead">
+            <h1 class="heroTitle reveal">
+              Asistente financiero con <span class="accent">IA + automatización</span> en n8n
+            </h1>
+
+            <p class="sectionLead sectionLeadFull reveal">
+              En este proyecto reconstruí y adapté un asistente financiero basado en agentes IA dentro de n8n, con memoria conversacional,
+              herramientas conectadas a datos reales y capacidad para consultar presupuesto, revisar gastos e insertar nuevos movimientos
+              desde una conversación natural. El valor del proyecto no está solo en el chatbot, sino en la arquitectura completa:
+              orquestación del agente, conexión con herramientas, persistencia de contexto y diseño reutilizable para un caso de uso real.
+            </p>
+
+            <div class="projectsGrid">
+              <article class="projectCard reveal">
+                <p class="trustBig">Qué demuestra</p>
+                <p class="cardText">
+                  Diseño de un workflow productivo en n8n con enfoque de arquitectura: integración de un agente IA, memoria persistente,
+                  herramientas conectadas a datos estructurados y separación clara entre conversación, lógica y almacenamiento.
+                </p>
+              </article>
+
+              <article class="projectCard reveal">
+                <p class="trustBig">Caso de uso</p>
+                <p class="cardText">
+                  El usuario puede consultar su situación financiera en lenguaje natural, revisar gastos por categoría, contrastar gasto real
+                  frente a presupuesto disponible y registrar nuevos movimientos sin interactuar directamente con la base de datos.
+                </p>
+              </article>
+
+              <article class="projectCard reveal">
+                <p class="trustBig">Valor profesional</p>
+                <p class="cardText">
+                  El proyecto traduce conceptos de IA aplicada en una solución operativa y presentable: automatización, persistencia, tools,
+                  integración cloud y una base clara para escalar hacia asistentes verticales más complejos.
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-label="Resumen ejecutivo">
+        <div class="container">
+          <div class="aboutGrid">
+            <div class="aboutCopy">
+              <p class="trustBig reveal">Resumen ejecutivo</p>
+
+              <p class="sectionLead sectionLeadFull reveal">
+                El flujo se apoya en un agente IA dentro de n8n que recibe mensajes del usuario desde un chat, interpreta la intención y decide
+                qué herramienta utilizar en función de la consulta. Para mantener continuidad entre mensajes, la memoria conversacional se almacena
+                en PostgreSQL. A nivel de datos, el asistente puede consultar gastos, consultar presupuesto e insertar nuevos registros, lo que lo
+                convierte en un ejemplo práctico de agente conectado a sistemas externos. La solución está planteada con foco en mantenibilidad:
+                el workflow es legible, modular y suficientemente claro como para poder mostrarse en portfolio como proyecto técnico real.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-label="Planteamiento del proyecto">
+        <div class="container">
+          <div class="sectionHead">
+            <p class="trustBig reveal">Planteamiento</p>
+          </div>
+
+          <div class="projectsGrid mt12">
+            <article class="projectCard reveal">
+              <p class="trustBig">Objetivo funcional</p>
+              <ul class="cardList">
+                <li>Permitir consultas financieras en lenguaje natural sin exponer la complejidad técnica al usuario.</li>
+                <li>Centralizar lógica conversacional, tools y memoria dentro de una arquitectura reproducible en n8n.</li>
+                <li>Demostrar cómo un agente IA puede operar sobre datos estructurados con utilidad real.</li>
+              </ul>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="trustBig">Decisiones técnicas</p>
+              <ul class="cardList">
+                <li>Uso de AI Agent como orquestador principal del flujo conversacional.</li>
+                <li>Persistencia del contexto mediante Postgres Chat Memory.</li>
+                <li>Separación de herramientas para leer gastos, leer presupuesto e insertar movimientos.</li>
+              </ul>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="trustBig">Enfoque de portfolio</p>
+              <ul class="cardList">
+                <li>Reconstrucción fiel del workflow original antes de plantear mejoras opcionales.</li>
+                <li>Arquitectura explicable para audiencias no técnicas y suficiente profundidad para perfil técnico.</li>
+                <li>Base sólida para evolucionar hacia una versión más profesional con stack cloud completo.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-label="Arquitectura de la solución">
+        <div class="container">
+          <div class="sectionHead mt12">
+            <p class="trustBig reveal">Arquitectura</p>
+            <p class="sectionLead sectionLeadFull reveal">
+              La solución está estructurada en capas sencillas: entrada conversacional, razonamiento del agente, memoria persistente y herramientas
+              externas. Esta separación permite explicar con claridad qué hace cada componente y facilita su mantenimiento o futura migración a una
+              arquitectura más avanzada.
+            </p>
+          </div>
+
+          <div class="projectsGrid mt12">
+            <article class="projectCard reveal">
+              <p class="trustBig">Entrada</p>
+              <p class="cardText">
+                El flujo comienza con un trigger de chat en n8n. Cada nuevo mensaje del usuario entra al workflow como input del agente.
+              </p>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="trustBig">Razonamiento</p>
+              <p class="cardText">
+                El nodo AI Agent interpreta la consulta, evalúa si necesita herramientas externas y delega la acción correspondiente en función
+                del objetivo del usuario.
+              </p>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="trustBig">Persistencia</p>
+              <p class="cardText">
+                La memoria conversacional se guarda en PostgreSQL para mantener contexto entre mensajes y permitir una experiencia más coherente.
+              </p>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="trustBig">Datos</p>
+              <p class="cardText">
+                Las tools conectan el agente con tablas de gastos y presupuesto, permitiendo lectura de datos e inserción de nuevos movimientos.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-label="Workflow y capturas">
+        <div class="container">
+          <div class="sectionHead">
+            <p class="eyebrow reveal">Workflow · Capturas · Conversación</p>
+            <h2 class="heroTitle reveal">Evidencia visual del proyecto</h2>
+          </div>
+
+          <div class="projectsGrid projectStack">
+            <article class="projectCard reveal">
+              <p class="miniTag miniTagGold">Vista 1 · Workflow general</p>
+              <p class="cardText" style="margin-top:10px;">
+                Estructura principal del workflow en n8n: chat trigger, agente, modelo, memoria y herramientas conectadas.
+              </p>
+              <figure class="mt12">
+                <img
+                  src="assets/projects/ai-finance-agent/workflow-general.png"
+                  alt="Workflow general del asistente financiero en n8n"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption class="cardText" style="margin-top:10px; opacity:.75;">
+                  Sustituir por captura real del canvas principal del workflow.
+                </figcaption>
+              </figure>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="miniTag miniTagGold">Vista 2 · Nodo del agente</p>
+              <p class="cardText" style="margin-top:10px;">
+                Configuración del AI Agent: prompt, herramientas conectadas y lógica de decisión.
+              </p>
+              <figure class="mt12">
+                <img
+                  src="assets/projects/ai-finance-agent/agent-config.png"
+                  alt="Configuración del AI Agent en n8n"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption class="cardText" style="margin-top:10px; opacity:.75;">
+                  Sustituir por captura real del nodo AI Agent y su configuración.
+                </figcaption>
+              </figure>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="miniTag miniTagGold">Vista 3 · Memoria y datos</p>
+              <p class="cardText" style="margin-top:10px;">
+                Persistencia de memoria conversacional y conexión con tablas de gastos y presupuesto.
+              </p>
+              <figure class="mt12">
+                <img
+                  src="assets/projects/ai-finance-agent/memory-data.png"
+                  alt="Conexión de memoria y datos del asistente financiero"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption class="cardText" style="margin-top:10px; opacity:.75;">
+                  Sustituir por captura real de Postgres Chat Memory y tools de datos.
+                </figcaption>
+              </figure>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="miniTag miniTagGold">Vista 4 · Chatbot en acción</p>
+              <p class="cardText" style="margin-top:10px;">
+                Ejemplo de interacción con el asistente: consulta de gasto, revisión de presupuesto y registro de nuevo movimiento.
+              </p>
+              <figure class="mt12">
+                <img
+                  src="assets/projects/ai-finance-agent/chatbot-demo.png"
+                  alt="Ejemplo de conversación con el asistente financiero"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption class="cardText" style="margin-top:10px; opacity:.75;">
+                  Sustituir por captura real del chatbot y sus respuestas.
+                </figcaption>
+              </figure>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-label="Capacidades del asistente">
+        <div class="container">
+          <div class="projectsGrid">
+            <article class="projectCard reveal">
+              <p class="trustBig">Consultas de gastos</p>
+              <p class="cardText">
+                El agente puede revisar movimientos registrados y responder preguntas sobre gasto por categoría, volumen acumulado o disponibilidad restante.
+              </p>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="trustBig">Seguimiento de presupuesto</p>
+              <p class="cardText">
+                La lógica del asistente permite contrastar presupuesto planificado con gasto ejecutado y devolver una respuesta resumida al usuario.
+              </p>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="trustBig">Inserción de datos</p>
+              <p class="cardText">
+                Además de consultar, el agente puede registrar nuevos movimientos, lo que convierte el flujo en un sistema transaccional sencillo y no solo en un visor de datos.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-label="Tecnologías utilizadas">
+        <div class="container">
+          <div class="sectionHead">
+            <p class="trustBig reveal">Stack técnico</p>
+          </div>
+
+          <div class="projectsGrid mt12">
+            <article class="projectCard reveal">
+              <p class="trustBig">Orquestación</p>
+              <p class="cardText">
+                n8n como plataforma principal de automatización y construcción del workflow.
+              </p>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="trustBig">IA y conversación</p>
+              <p class="cardText">
+                AI Agent + modelo LLM para interpretar intención, seleccionar herramientas y generar respuestas útiles.
+              </p>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="trustBig">Persistencia</p>
+              <p class="cardText">
+                PostgreSQL / Supabase para la memoria conversacional del agente.
+              </p>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="trustBig">Datos operativos</p>
+              <p class="cardText">
+                Airtable como capa de datos estructurados para gastos y presupuestos en la versión original del flujo.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-label="Resultados y valor">
+        <div class="container">
+          <div class="projectsGrid">
+            <article class="projectCard reveal">
+              <p class="trustBig">Resultado técnico</p>
+              <p class="cardText">
+                El proyecto demuestra cómo pasar de un flujo experimental a una solución explicable, conectada a datos reales y suficientemente ordenada como para ser enseñada como caso práctico.
+              </p>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="trustBig">Lectura profesional</p>
+              <p class="cardText">
+                Más allá del componente visual, el interés del proyecto está en la arquitectura: herramientas, memoria, integraciones y una lógica suficientemente clara como para ser mantenida.
+              </p>
+            </article>
+
+            <article class="projectCard reveal">
+              <p class="trustBig">Escalabilidad</p>
+              <p class="cardText">
+                La base permite evolucionar hacia una versión más robusta con SQL nativo, validaciones adicionales, autenticación de usuario y una capa de reporting financiero más avanzada.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-label="Conclusión">
+        <div class="container">
+          <div class="sectionHead">
+            <p class="trustBig reveal">Conclusión</p>
+            <p class="sectionLead sectionLeadFull reveal">
+              Este proyecto demuestra una aplicación práctica de agentes IA más allá del prototipo conversacional. El valor real aparece cuando el agente
+              se conecta a herramientas, mantiene contexto y puede operar sobre datos estructurados de forma útil. Como pieza de portfolio, resume bien una
+              combinación que me interesa especialmente: automatización, datos, arquitectura cloud e IA aplicada a procesos reales.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footerInner">
+        <div class="footerRight">
+          <a class="footerLink" href="https://www.linkedin.com/in/marcos-medina-subero-971167247/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="footerLink" href="https://wa.me/34699616190?text=Hola%20Marcos%2C%20me%20interesa%20tu%20proyecto%20de%20asistente%20financiero%20con%20IA%20en%20n8n." target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="container footerBottom">
+        <p class="footerSmall">© <span id="year"></span> Marcos Medina Subero. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+
+    <script defer src="js/main.js"></script>
+  </body>
+</html>
