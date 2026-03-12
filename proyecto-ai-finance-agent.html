@@ -159,7 +159,7 @@
       #imgZoomViewer {
         position: fixed;
         inset: 0;
-        background: rgba(10, 10, 15, 0.92);
+        background: rgba(10, 10, 15, 0.94);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -167,6 +167,7 @@
         opacity: 0;
         pointer-events: none;
         transition: 0.25s;
+        overflow: hidden;
       }
 
       #imgZoomViewer.active {
@@ -174,12 +175,74 @@
         pointer-events: auto;
       }
 
+      #imgZoomStage {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        cursor: grab;
+      }
+
+      #imgZoomStage.dragging {
+        cursor: grabbing;
+      }
+
       #imgZoomTarget {
         max-width: 90vw;
         max-height: 90vh;
-        transform-origin: center;
+        transform-origin: center center;
         transition: transform 0.08s;
-        cursor: zoom-out;
+        user-select: none;
+        -webkit-user-drag: none;
+        cursor: grab;
+      }
+
+      #imgZoomStage.dragging #imgZoomTarget {
+        cursor: grabbing;
+      }
+
+      .zoomControls {
+        position: absolute;
+        top: 30px;
+        right: 40px;
+        display: flex;
+        gap: 8px;
+        z-index: 2;
+      }
+
+      .zoomControls button {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        background: rgba(255, 255, 255, 0.08);
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background 0.2s ease, border-color 0.2s ease;
+      }
+
+      .zoomControls button:hover {
+        background: rgba(255, 255, 255, 0.16);
+        border-color: rgba(255, 255, 255, 0.24);
+      }
+
+      .zoomControls #zoomReset {
+        width: auto;
+        min-width: 68px;
+        padding: 0 12px;
+        font-size: 14px;
+      }
+
+      .zoomHint {
+        position: absolute;
+        left: 32px;
+        bottom: 28px;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.9rem;
+        z-index: 2;
       }
 
       @media (max-width: 1100px) {
@@ -199,6 +262,25 @@
 
         .workflowSidebarText {
           max-width: none;
+        }
+      }
+
+      @media (max-width: 780px) {
+        .zoomControls {
+          top: 18px;
+          right: 18px;
+        }
+
+        .zoomHint {
+          left: 18px;
+          right: 18px;
+          bottom: 18px;
+          font-size: 0.82rem;
+        }
+
+        #imgZoomTarget {
+          max-width: 94vw;
+          max-height: 82vh;
         }
       }
     </style>
@@ -404,40 +486,174 @@
       </div>
     </footer>
 
-    <div id="imgZoomViewer">
-      <img id="imgZoomTarget" src="" alt="" />
+    <div id="imgZoomViewer" aria-hidden="true">
+      <div class="zoomControls">
+        <button id="zoomOut" type="button" aria-label="Reducir zoom">−</button>
+        <button id="zoomReset" type="button" aria-label="Restablecer zoom">100%</button>
+        <button id="zoomIn" type="button" aria-label="Aumentar zoom">+</button>
+      </div>
+
+      <div id="imgZoomStage">
+        <img id="imgZoomTarget" src="" alt="" />
+      </div>
+
+      <p class="zoomHint">
+        Rueda para zoom · arrastra para mover · doble click para ampliar/restablecer · ESC para cerrar
+      </p>
     </div>
 
     <script defer src="js/main.js"></script>
     <script>
       const preview = document.querySelector(".workflowPreviewCard img");
       const viewer = document.getElementById("imgZoomViewer");
+      const stage = document.getElementById("imgZoomStage");
       const target = document.getElementById("imgZoomTarget");
+      const zoomIn = document.getElementById("zoomIn");
+      const zoomOut = document.getElementById("zoomOut");
+      const zoomReset = document.getElementById("zoomReset");
 
       let scale = 1;
+      let translateX = 0;
+      let translateY = 0;
+      let isDragging = false;
+      let startX = 0;
+      let startY = 0;
+      let dragStartX = 0;
+      let dragStartY = 0;
 
-      preview.addEventListener("click", () => {
+      function updateZoom() {
+        target.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+      }
+
+      function resetView() {
+        scale = 1;
+        translateX = 0;
+        translateY = 0;
+        updateZoom();
+      }
+
+      function openViewer() {
         target.src = preview.src;
         target.alt = preview.alt;
         viewer.classList.add("active");
-        scale = 1;
-        target.style.transform = "scale(1)";
-      });
+        viewer.setAttribute("aria-hidden", "false");
+        resetView();
+      }
 
-      viewer.addEventListener("click", () => {
+      function closeViewer() {
         viewer.classList.remove("active");
+        viewer.setAttribute("aria-hidden", "true");
+        isDragging = false;
+        stage.classList.remove("dragging");
+      }
+
+      function changeZoom(delta) {
+        const nextScale = Math.min(Math.max(scale + delta, 0.6), 4);
+        scale = nextScale;
+        if (scale <= 1) {
+          translateX = 0;
+          translateY = 0;
+        }
+        updateZoom();
+      }
+
+      preview.addEventListener("click", openViewer);
+
+      viewer.addEventListener("click", closeViewer);
+
+      stage.addEventListener("click", (e) => {
+        e.stopPropagation();
       });
 
       target.addEventListener("click", (e) => {
         e.stopPropagation();
       });
 
-      target.addEventListener("wheel", (e) => {
+      zoomIn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        changeZoom(0.2);
+      });
+
+      zoomOut.addEventListener("click", (e) => {
+        e.stopPropagation();
+        changeZoom(-0.2);
+      });
+
+      zoomReset.addEventListener("click", (e) => {
+        e.stopPropagation();
+        resetView();
+      });
+
+      target.addEventListener(
+        "wheel",
+        (e) => {
+          e.preventDefault();
+          const delta = e.deltaY * -0.0015;
+          scale = Math.min(Math.max(scale + delta, 0.6), 4);
+
+          if (scale <= 1) {
+            translateX = 0;
+            translateY = 0;
+          }
+
+          updateZoom();
+        },
+        { passive: false }
+      );
+
+      target.addEventListener("dblclick", (e) => {
+        e.stopPropagation();
+        if (scale === 1) {
+          scale = 2;
+        } else {
+          resetView();
+          return;
+        }
+        updateZoom();
+      });
+
+      target.addEventListener("mousedown", (e) => {
+        if (scale <= 1) return;
         e.preventDefault();
-        scale += e.deltaY * -0.001;
-        scale = Math.min(Math.max(0.8, scale), 3);
-        target.style.transform = `scale(${scale})`;
-      }, { passive: false });
+        isDragging = true;
+        stage.classList.add("dragging");
+        startX = e.clientX;
+        startY = e.clientY;
+        dragStartX = translateX;
+        dragStartY = translateY;
+      });
+
+      window.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+        translateX = dragStartX + (e.clientX - startX);
+        translateY = dragStartY + (e.clientY - startY);
+        updateZoom();
+      });
+
+      window.addEventListener("mouseup", () => {
+        isDragging = false;
+        stage.classList.remove("dragging");
+      });
+
+      window.addEventListener("keydown", (e) => {
+        if (!viewer.classList.contains("active")) return;
+
+        if (e.key === "Escape") {
+          closeViewer();
+        }
+
+        if (e.key === "+" || e.key === "=") {
+          changeZoom(0.2);
+        }
+
+        if (e.key === "-") {
+          changeZoom(-0.2);
+        }
+
+        if (e.key === "0") {
+          resetView();
+        }
+      });
     </script>
   </body>
 </html>
