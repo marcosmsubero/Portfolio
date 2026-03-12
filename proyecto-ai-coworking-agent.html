@@ -1,352 +1,706 @@
 <!doctype html>
 <html lang="es">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Agente de gestión para coworking con IA — Marcos Medina Subero</title>
+    <title>Marcos Medina Subero — Proyecto · Agente de coworking con IA en n8n</title>
+    <meta
+      name="description"
+      content="Workflow de n8n con agente IA para consultar normativa, buscar miembros, revisar eventos y registrar reservas en un espacio de coworking."
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#0b1320" />
+    <link rel="canonical" href="proyecto-ai-coworking-agent.html" />
 
-  <meta
-    name="description"
-    content="Workflow conversacional en n8n para gestión de coworking: consulta de normativa, búsqueda de miembros, eventos y reservas mediante un agente de IA."
-  />
+    <meta property="og:title" content="Marcos Medina Subero — Proyecto · Agente de coworking con IA en n8n" />
+    <meta
+      property="og:description"
+      content="Workflow de automatización con n8n, memoria conversacional, base documental y tools conectadas para gestión de coworking."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="proyecto-ai-coworking-agent.html" />
 
-  <meta name="robots" content="index,follow" />
-  <meta name="theme-color" content="#071224" />
+    <link rel="preload" href="css/styles.css" as="style" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="preload" href="css/data.css" as="style" />
+    <link rel="stylesheet" href="css/data.css" />
 
-  <link rel="canonical" href="proyecto-ai-coworking-agent.html" />
+    <style>
+      .workflowPageTop {
+        padding-top: 28px;
+      }
 
-  <link rel="preload" href="css/styles.css" as="style" />
-  <link rel="stylesheet" href="css/styles.css" />
-
-  <link rel="preload" href="css/data.css" as="style" />
-  <link rel="stylesheet" href="css/data.css" />
-
-  <style>
-    .workflowShell {
-      display: grid;
-      grid-template-columns: 300px minmax(0, 1fr);
-      gap: 40px;
-      align-items: start;
-    }
-
-    .workflowSidebar {
-      position: sticky;
-      top: 96px;
-    }
-
-    .workflowTitle {
-      font-size: clamp(2.2rem, 4.6vw, 4.2rem);
-      line-height: 0.95;
-      letter-spacing: -0.05em;
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: 18px;
-    }
-
-    .workflowSidebarText {
-      font-size: 1rem;
-      line-height: 1.65;
-      color: rgba(255, 255, 255, 0.68);
-      margin-bottom: 22px;
-    }
-
-    .workflowPreviewCard {
-      margin: 0;
-      padding: 12px;
-      border-radius: 24px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0.06),
-        rgba(255, 255, 255, 0.025)
-      );
-      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.28);
-    }
-
-    .workflowPreviewCard img {
-      display: block;
-      width: 100%;
-      height: auto;
-      max-height: 75vh;
-      object-fit: contain;
-      border-radius: 16px;
-      cursor: zoom-in;
-    }
-
-    .workflowBody {
-      margin-top: 48px;
-    }
-
-    #imgZoomViewer {
-      position: fixed;
-      inset: 0;
-      background: rgba(10, 10, 15, 0.94);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      opacity: 0;
-      pointer-events: none;
-      transition: 0.25s;
-      overflow: hidden;
-    }
-
-    #imgZoomViewer.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    #imgZoomStage {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      cursor: grab;
-    }
-
-    #imgZoomTarget {
-      max-width: 90vw;
-      max-height: 90vh;
-      transform-origin: center;
-      transition: transform 0.08s;
-    }
-
-    .zoomControls {
-      position: absolute;
-      top: 30px;
-      right: 40px;
-      display: flex;
-      gap: 8px;
-    }
-
-    .zoomControls button {
-      width: 42px;
-      height: 42px;
-      border-radius: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      background: rgba(255, 255, 255, 0.08);
-      color: white;
-      font-size: 18px;
-      cursor: pointer;
-    }
-
-    .zoomControls button:hover {
-      background: rgba(255, 255, 255, 0.16);
-    }
-
-    .zoomHint {
-      position: absolute;
-      left: 30px;
-      bottom: 30px;
-      color: rgba(255, 255, 255, 0.6);
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: 1000px) {
       .workflowShell {
-        grid-template-columns: 1fr;
+        display: grid;
+        grid-template-columns: 300px minmax(0, 1fr);
+        gap: 40px;
+        align-items: start;
       }
 
       .workflowSidebar {
-        position: relative;
+        position: sticky;
+        top: 96px;
+        align-self: start;
       }
-    }
-  </style>
-</head>
 
-<body class="dataProject">
-  <a class="skip-link" href="#main">Saltar al contenido</a>
+      .workflowBack {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.72);
+        text-decoration: none;
+        margin-bottom: 26px;
+      }
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index-data.html">
-        <img
-          class="brandAvatar"
-          src="assets/images/foto_perfil.jpg"
-          alt="Foto de perfil"
-          width="36"
-          height="36"
-        />
-        <span class="brandText">Marcos Medina Subero</span>
-      </a>
+      .workflowBack:hover {
+        color: #fff;
+      }
 
-      <nav class="nav">
-        <div class="navMenu navMenuData">
-          <a class="navLink" href="index-data.html">Inicio</a>
-          <a class="navLink" href="perfil-data.html">Perfil</a>
-          <a class="navLink isActive" href="proyectos-data.html">Proyectos</a>
-          <a class="navLink" href="contacto-data.html">Contacto</a>
-        </div>
-      </nav>
-    </div>
-  </header>
+      .workflowMiniRow {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 18px;
+      }
 
-  <main id="main">
-    <section class="section">
-      <div class="container workflowShell">
-        <aside class="workflowSidebar">
-          <h1 class="workflowTitle">
-            Agente de gestión para coworking con IA
-          </h1>
+      .workflowMiniBadge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 40px;
+        height: 40px;
+        padding: 0 12px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.05);
+        color: rgba(255, 255, 255, 0.88);
+        font-size: 0.86rem;
+      }
 
-          <p class="workflowSidebarText">
-            Workflow conversacional construido en n8n que permite consultar
-            normativa, buscar miembros, revisar eventos disponibles y registrar
-            reservas utilizando herramientas conectadas a datos reales.
-          </p>
+      .workflowTitle {
+        font-size: clamp(2.2rem, 4.6vw, 4.2rem);
+        line-height: 0.95;
+        letter-spacing: -0.05em;
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 18px;
+        max-width: 10ch;
+      }
 
-          <a class="btn btnPrimary btnFull" href="contacto-data.html">
-            Me interesa este workflow
-          </a>
-        </aside>
+      .workflowSidebarText {
+        font-size: 1rem;
+        line-height: 1.65;
+        color: rgba(255, 255, 255, 0.68);
+        max-width: 28ch;
+        margin-bottom: 22px;
+      }
 
-        <div class="workflowMain">
-          <figure class="workflowPreviewCard">
-            <img
-              src="assets/projects/ai-coworking-agent/workflow-coworking.png"
-              alt="Workflow del agente de coworking en n8n"
-              loading="lazy"
-            />
-          </figure>
+      .workflowCtaWrap {
+        margin-bottom: 34px;
+      }
 
-          <div class="workflowBody">
-            <section class="section">
-              <div class="sectionHead">
-                <h2 class="heroTitle">Qué hace este workflow</h2>
+      .workflowMeta {
+        display: grid;
+        gap: 18px;
+      }
 
-                <p class="sectionLead sectionLeadFull">
-                  Este agente combina un modelo conversacional, memoria
-                  contextual y herramientas conectadas a bases de datos para
-                  asistir en la gestión de un espacio de coworking.
-                </p>
+      .workflowMetaBlock {
+        padding-top: 14px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .workflowMetaLabel {
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.42);
+        margin-bottom: 6px;
+      }
+
+      .workflowMetaValue {
+        color: rgba(255, 255, 255, 0.9);
+        line-height: 1.5;
+        font-size: 0.98rem;
+      }
+
+      .workflowMain {
+        min-width: 0;
+      }
+
+      .workflowPreviewCard {
+        margin: 0;
+        padding: 12px;
+        border-radius: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.025));
+        box-shadow: 0 30px 70px rgba(0, 0, 0, 0.28);
+      }
+
+      .workflowPreviewCard img {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-height: 75vh;
+        object-fit: contain;
+        border-radius: 16px;
+        cursor: zoom-in;
+      }
+
+      .workflowBody {
+        margin-top: 46px;
+      }
+
+      .workflowBody .sectionHead {
+        max-width: 980px;
+      }
+
+      #imgZoomViewer {
+        position: fixed;
+        inset: 0;
+        background: rgba(10, 10, 15, 0.94);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.25s;
+        overflow: hidden;
+      }
+
+      #imgZoomViewer.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      #imgZoomStage {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        cursor: grab;
+      }
+
+      #imgZoomStage.dragging {
+        cursor: grabbing;
+      }
+
+      #imgZoomTarget {
+        max-width: 90vw;
+        max-height: 90vh;
+        transform-origin: center center;
+        transition: transform 0.08s;
+        user-select: none;
+        -webkit-user-drag: none;
+        cursor: grab;
+      }
+
+      #imgZoomStage.dragging #imgZoomTarget {
+        cursor: grabbing;
+      }
+
+      .zoomControls {
+        position: absolute;
+        top: 30px;
+        right: 40px;
+        display: flex;
+        gap: 8px;
+        z-index: 2;
+      }
+
+      .zoomControls button {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        background: rgba(255, 255, 255, 0.08);
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background 0.2s ease, border-color 0.2s ease;
+      }
+
+      .zoomControls button:hover {
+        background: rgba(255, 255, 255, 0.16);
+        border-color: rgba(255, 255, 255, 0.24);
+      }
+
+      .zoomControls #zoomReset {
+        width: auto;
+        min-width: 68px;
+        padding: 0 12px;
+        font-size: 14px;
+      }
+
+      .zoomHint {
+        position: absolute;
+        left: 32px;
+        bottom: 28px;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.9rem;
+        z-index: 2;
+      }
+
+      @media (max-width: 1100px) {
+        .workflowShell {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+
+        .workflowSidebar {
+          position: relative;
+          top: auto;
+        }
+
+        .workflowTitle {
+          max-width: none;
+        }
+
+        .workflowSidebarText {
+          max-width: none;
+        }
+      }
+
+      @media (max-width: 780px) {
+        .zoomControls {
+          top: 18px;
+          right: 18px;
+        }
+
+        .zoomHint {
+          left: 18px;
+          right: 18px;
+          bottom: 18px;
+          font-size: 0.82rem;
+        }
+
+        #imgZoomTarget {
+          max-width: 94vw;
+          max-height: 82vh;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="dataProject">
+    <a class="skip-link" href="#main">Saltar al contenido</a>
+
+    <header class="site-header" data-header>
+      <div class="container header-inner">
+        <a class="brand" href="index-data.html" aria-label="Ir al inicio (Data)">
+          <img
+            class="brandAvatar"
+            src="assets/images/foto_perfil.jpg"
+            alt="Foto de perfil de Marcos Subero"
+            width="36"
+            height="36"
+            loading="eager"
+            decoding="async"
+          />
+          <span class="brandText">Marcos Medina Subero</span>
+        </a>
+
+        <nav class="nav" aria-label="Navegación principal (Data)" data-nav>
+          <button
+            class="navToggle"
+            type="button"
+            aria-label="Abrir menú"
+            aria-expanded="false"
+            aria-controls="navMenu"
+            data-nav-toggle
+          >
+            <span class="navToggleBars" aria-hidden="true"></span>
+          </button>
+
+          <div class="navMenu navMenuData" id="navMenu" data-nav-menu>
+            <a class="navLink" href="index-data.html">Inicio</a>
+            <a class="navLink" href="perfil-data.html">Perfil</a>
+            <a class="navLink isActive" href="proyectos-data.html">Proyectos</a>
+            <a class="navLink" href="contacto-data.html">Contacto</a>
+
+            <a class="navBack" href="proyectos-data.html" aria-label="Volver a proyectos">
+              <svg viewBox="0 0 24 24" class="navBackIcon" aria-hidden="true" focusable="false">
+                <path d="M14 6 L8 12 L14 18" />
+              </svg>
+            </a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="section workflowPageTop" aria-label="Proyecto workflow n8n">
+        <div class="container workflowShell">
+          <aside class="workflowSidebar reveal">
+            <a class="workflowBack" href="proyectos-data.html">
+              <span aria-hidden="true">←</span>
+              <span>Volver a proyectos</span>
+            </a>
+
+            <div class="workflowMiniRow" aria-label="Stack rápido">
+              <span class="workflowMiniBadge">n8n</span>
+              <span class="workflowMiniBadge">AI</span>
+              <span class="workflowMiniBadge">RAG</span>
+              <span class="workflowMiniBadge">+4</span>
+            </div>
+
+            <h1 class="workflowTitle">
+              Agente de coworking con IA en n8n
+            </h1>
+
+            <p class="workflowSidebarText">
+              Workflow conversacional pensado para consultar normativa, buscar miembros, revisar eventos y registrar reservas automáticamente con ayuda de un agente conectado a datos reales y una base documental.
+            </p>
+
+            <div class="workflowCtaWrap">
+              <a class="btn btnPrimary btnFull" href="#implementacion">
+                Me interesa este workflow
+              </a>
+            </div>
+
+            <div class="workflowMeta" aria-label="Información del proyecto">
+              <div class="workflowMetaBlock">
+                <p class="workflowMetaLabel">Tipo</p>
+                <p class="workflowMetaValue">Workflow con AI Agent + RAG</p>
               </div>
 
-              <div class="projectsGrid mt12">
-                <article class="projectCard">
-                  <p class="trustBig">Consulta documental</p>
-
-                  <p class="cardText">
-                    La normativa del coworking se indexa en un vector store
-                    permitiendo al agente responder preguntas sobre horarios,
-                    normas y funcionamiento del espacio.
-                  </p>
-                </article>
-
-                <article class="projectCard">
-                  <p class="trustBig">Datos estructurados</p>
-
-                  <p class="cardText">
-                    El agente puede consultar miembros y eventos almacenados en
-                    una base de datos para responder preguntas o realizar
-                    acciones.
-                  </p>
-                </article>
-
-                <article class="projectCard">
-                  <p class="trustBig">Acciones automáticas</p>
-
-                  <p class="cardText">
-                    El workflow permite registrar reservas de eventos
-                    directamente desde la conversación.
-                  </p>
-                </article>
-              </div>
-            </section>
-
-            <section class="section">
-              <div class="sectionHead">
-                <h2 class="heroTitle">Pipeline de conocimiento</h2>
-
-                <p class="sectionLead sectionLeadFull">
-                  El sistema incluye un segundo workflow dedicado a mantener
-                  actualizado el conocimiento del coworking mediante documentos
-                  indexados en Pinecone.
-                </p>
+              <div class="workflowMetaBlock">
+                <p class="workflowMetaLabel">Stack</p>
+                <p class="workflowMetaValue">n8n · OpenAI · Pinecone · Airtable · Google Drive</p>
               </div>
 
-              <div class="projectsGrid mt12">
-                <article class="projectCard">
-                  <p class="trustBig">Ingesta automática</p>
-                  <p class="cardText">
-                    Los documentos subidos a Google Drive activan el pipeline
-                    de procesamiento automáticamente.
-                  </p>
-                </article>
-
-                <article class="projectCard">
-                  <p class="trustBig">Embeddings</p>
-                  <p class="cardText">
-                    El contenido se divide en fragmentos y se transforma en
-                    embeddings mediante OpenAI.
-                  </p>
-                </article>
-
-                <article class="projectCard">
-                  <p class="trustBig">Vector database</p>
-                  <p class="cardText">
-                    Los embeddings se almacenan en Pinecone para búsquedas
-                    semánticas desde el agente.
-                  </p>
-                </article>
-              </div>
-            </section>
-
-            <section class="section">
-              <div class="sectionHead">
-                <h2 class="heroTitle">Implementación</h2>
-
-                <p class="sectionLead sectionLeadFull">
-                  Este tipo de workflow puede adaptarse a otros espacios de
-                  coworking o comunidades que necesiten automatizar consultas,
-                  gestión de miembros o reservas mediante IA.
-                </p>
+              <div class="workflowMetaBlock">
+                <p class="workflowMetaLabel">Caso de uso</p>
+                <p class="workflowMetaValue">Consulta documental y gestión de miembros, eventos y reservas</p>
               </div>
 
-              <div class="primaryCtas mt12">
-                <a class="btn btnPrimary" href="contacto-data.html">
-                  Contactar para implementar este modelo
-                </a>
+              <div class="workflowMetaBlock">
+                <p class="workflowMetaLabel">Disponible para</p>
+                <p class="workflowMetaValue">Uso personal y adaptación guiada</p>
               </div>
-            </section>
+            </div>
+          </aside>
+
+          <div class="workflowMain">
+            <figure class="workflowPreviewCard reveal">
+              <img
+                src="assets/projects/ai-coworking-agent/workflow-coworking.png"
+                alt="Workflow completo del agente de coworking en n8n con el chat activado"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+
+            <div class="workflowBody">
+              <section class="section" aria-label="Descripción del workflow">
+                <div class="sectionHead">
+                  <h2 class="heroTitle reveal">Qué hace este workflow</h2>
+
+                  <p class="sectionLead sectionLeadFull reveal">
+                    Este modelo combina una interfaz conversacional, un agente de IA, memoria persistente, una base documental vectorizada y herramientas conectadas para trabajar sobre la operativa de un espacio de coworking de forma natural. El usuario puede hacer preguntas sobre normativa, consultar miembros, revisar eventos disponibles o registrar reservas sin interactuar directamente con tablas o sistemas internos.
+                  </p>
+                </div>
+
+                <div class="projectsGrid mt12">
+                  <article class="projectCard reveal">
+                    <p class="trustBig">Chat como interfaz</p>
+                    <p class="cardText">
+                      El flujo utiliza conversación natural como punto de entrada para que consultar o registrar información sea más sencillo.
+                    </p>
+                  </article>
+
+                  <article class="projectCard reveal">
+                    <p class="trustBig">Memoria conversacional</p>
+                    <p class="cardText">
+                      La memoria permite mantener contexto entre mensajes y hacer el uso del agente más coherente y cómodo.
+                    </p>
+                  </article>
+
+                  <article class="projectCard reveal">
+                    <p class="trustBig">Datos y normativa conectados</p>
+                    <p class="cardText">
+                      El workflow no solo responde: también consulta documentación, busca registros estructurados y ejecuta acciones sobre las herramientas conectadas.
+                    </p>
+                  </article>
+                </div>
+              </section>
+
+              <section class="section" aria-label="Pipeline de conocimiento">
+                <div class="sectionHead">
+                  <h2 class="heroTitle reveal">Pipeline de conocimiento</h2>
+
+                  <p class="sectionLead sectionLeadFull reveal">
+                    Además del agente principal, el sistema incluye un segundo workflow dedicado a mantener actualizado el conocimiento del coworking. Este flujo automatiza la carga de documentos desde Google Drive y su indexación en Pinecone para que el agente pueda responder preguntas basadas en información real.
+                  </p>
+                </div>
+
+                <div class="projectsGrid mt12">
+                  <article class="projectCard reveal">
+                    <p class="trustBig">Ingesta automática</p>
+                    <p class="cardText">
+                      Cuando se sube un documento a Google Drive, el workflow se activa automáticamente y procesa su contenido.
+                    </p>
+                  </article>
+
+                  <article class="projectCard reveal">
+                    <p class="trustBig">Embeddings</p>
+                    <p class="cardText">
+                      El contenido se divide en fragmentos y se transforma en embeddings utilizando OpenAI para habilitar búsquedas semánticas.
+                    </p>
+                  </article>
+
+                  <article class="projectCard reveal">
+                    <p class="trustBig">Base de conocimiento vectorial</p>
+                    <p class="cardText">
+                      Los embeddings se almacenan en Pinecone, creando una base de conocimiento que el agente puede consultar cuando necesita responder sobre normativa o funcionamiento del espacio.
+                    </p>
+                  </article>
+                </div>
+              </section>
+
+              <section class="section" id="implementacion" aria-label="Implementación del workflow">
+                <div class="sectionHead">
+                  <h2 class="heroTitle reveal">Si te interesa, puedo ayudarte a implementarlo</h2>
+
+                  <p class="sectionLead sectionLeadFull reveal">
+                    Este workflow puede adaptarse para uso personal o ajustarse a otros contextos donde tenga sentido combinar conversación, documentación, datos y automatización. Si te interesa una solución así, puedo ayudarte a revisar el caso, adaptar el flujo y dejar una versión funcional para tu entorno.
+                  </p>
+                </div>
+
+                <div class="projectsGrid mt12">
+                  <article class="projectCard reveal">
+                    <p class="trustBig">Qué se puede adaptar</p>
+                    <p class="cardText">
+                      La lógica del workflow puede reutilizarse para otros casos de consulta documental, gestión de miembros, eventos o registro automático de acciones.
+                    </p>
+                  </article>
+
+                  <article class="projectCard reveal">
+                    <p class="trustBig">Cómo sería el proceso</p>
+                    <p class="cardText">
+                      Primero reviso tu caso y la estructura de los datos. Después adapto el workflow y te ayudo a dejarlo listo para usarlo en tu propio entorno.
+                    </p>
+                  </article>
+
+                  <article class="projectCard reveal">
+                    <p class="trustBig">Para quién encaja</p>
+                    <p class="cardText">
+                      Puede ser útil para espacios de coworking, comunidades o proyectos que quieran organizar mejor su información y automatizar consultas o tareas operativas.
+                    </p>
+                  </article>
+                </div>
+
+                <div class="primaryCtas" style="margin-top: 20px;">
+                  <a class="btn btnPrimary btnSm" href="contacto-data.html">
+                    Contactar para implementarlo
+                  </a>
+                </div>
+              </section>
+            </div>
           </div>
         </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footerInner">
+        <div class="footerRight">
+          <a
+            class="footerLink"
+            href="https://www.linkedin.com/in/marcos-medina-subero-971167247/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </a>
+          <a
+            class="footerLink"
+            href="https://wa.me/34699616190?text=Hola%20Marcos%2C%20me%20interesa%20tu%20workflow%20de%20n8n."
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            WhatsApp
+          </a>
+        </div>
       </div>
-    </section>
-  </main>
 
-  <footer class="site-footer">
-    <div class="container footerInner">
-      <div class="footerRight">
-        <a
-          class="footerLink"
-          href="https://www.linkedin.com"
-          target="_blank"
-          rel="noopener"
-        >
-          LinkedIn
-        </a>
-
-        <a
-          class="footerLink"
-          href="https://wa.me/34699616190"
-          target="_blank"
-          rel="noopener"
-        >
-          WhatsApp
-        </a>
+      <div class="container footerBottom">
+        <p class="footerSmall">© <span id="year"></span> Marcos Medina Subero. Todos los derechos reservados.</p>
       </div>
-    </div>
+    </footer>
 
-    <div class="container footerBottom">
-      <p class="footerSmall">
-        © <span id="year"></span> Marcos Medina Subero
+    <div id="imgZoomViewer" aria-hidden="true">
+      <div class="zoomControls">
+        <button id="zoomOut" type="button" aria-label="Reducir zoom">−</button>
+        <button id="zoomReset" type="button" aria-label="Restablecer zoom">100%</button>
+        <button id="zoomIn" type="button" aria-label="Aumentar zoom">+</button>
+      </div>
+
+      <div id="imgZoomStage">
+        <img id="imgZoomTarget" src="" alt="" />
+      </div>
+
+      <p class="zoomHint">
+        Rueda para zoom · arrastra para mover · doble click para ampliar/restablecer · ESC para cerrar
       </p>
     </div>
-  </footer>
 
-  <script defer src="js/main.js"></script>
-</body>
+    <script defer src="js/main.js"></script>
+    <script>
+      const preview = document.querySelector(".workflowPreviewCard img");
+      const viewer = document.getElementById("imgZoomViewer");
+      const stage = document.getElementById("imgZoomStage");
+      const target = document.getElementById("imgZoomTarget");
+      const zoomIn = document.getElementById("zoomIn");
+      const zoomOut = document.getElementById("zoomOut");
+      const zoomReset = document.getElementById("zoomReset");
+
+      let scale = 1;
+      let translateX = 0;
+      let translateY = 0;
+      let isDragging = false;
+      let startX = 0;
+      let startY = 0;
+      let dragStartX = 0;
+      let dragStartY = 0;
+
+      function updateZoom() {
+        target.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+      }
+
+      function resetView() {
+        scale = 1;
+        translateX = 0;
+        translateY = 0;
+        updateZoom();
+      }
+
+      function openViewer() {
+        target.src = preview.src;
+        target.alt = preview.alt;
+        viewer.classList.add("active");
+        viewer.setAttribute("aria-hidden", "false");
+        resetView();
+      }
+
+      function closeViewer() {
+        viewer.classList.remove("active");
+        viewer.setAttribute("aria-hidden", "true");
+        isDragging = false;
+        stage.classList.remove("dragging");
+      }
+
+      function changeZoom(delta) {
+        const nextScale = Math.min(Math.max(scale + delta, 0.6), 4);
+        scale = nextScale;
+        if (scale <= 1) {
+          translateX = 0;
+          translateY = 0;
+        }
+        updateZoom();
+      }
+
+      preview.addEventListener("click", openViewer);
+
+      viewer.addEventListener("click", closeViewer);
+
+      stage.addEventListener("click", (e) => {
+        e.stopPropagation();
+      });
+
+      target.addEventListener("click", (e) => {
+        e.stopPropagation();
+      });
+
+      zoomIn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        changeZoom(0.2);
+      });
+
+      zoomOut.addEventListener("click", (e) => {
+        e.stopPropagation();
+        changeZoom(-0.2);
+      });
+
+      zoomReset.addEventListener("click", (e) => {
+        e.stopPropagation();
+        resetView();
+      });
+
+      target.addEventListener(
+        "wheel",
+        (e) => {
+          e.preventDefault();
+          const delta = e.deltaY * -0.0015;
+          scale = Math.min(Math.max(scale + delta, 0.6), 4);
+
+          if (scale <= 1) {
+            translateX = 0;
+            translateY = 0;
+          }
+
+          updateZoom();
+        },
+        { passive: false }
+      );
+
+      target.addEventListener("dblclick", (e) => {
+        e.stopPropagation();
+        if (scale === 1) {
+          scale = 2;
+        } else {
+          resetView();
+          return;
+        }
+        updateZoom();
+      });
+
+      target.addEventListener("mousedown", (e) => {
+        if (scale <= 1) return;
+        e.preventDefault();
+        isDragging = true;
+        stage.classList.add("dragging");
+        startX = e.clientX;
+        startY = e.clientY;
+        dragStartX = translateX;
+        dragStartY = translateY;
+      });
+
+      window.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+        translateX = dragStartX + (e.clientX - startX);
+        translateY = dragStartY + (e.clientY - startY);
+        updateZoom();
+      });
+
+      window.addEventListener("mouseup", () => {
+        isDragging = false;
+        stage.classList.remove("dragging");
+      });
+
+      window.addEventListener("keydown", (e) => {
+        if (!viewer.classList.contains("active")) return;
+
+        if (e.key === "Escape") {
+          closeViewer();
+        }
+
+        if (e.key === "+" || e.key === "=") {
+          changeZoom(0.2);
+        }
+
+        if (e.key === "-") {
+          changeZoom(-0.2);
+        }
+
+        if (e.key === "0") {
+          resetView();
+        }
+      });
+    </script>
+  </body>
 </html>
