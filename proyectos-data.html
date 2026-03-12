@@ -1,24 +1,22 @@
-
 <!doctype html>
 <html lang="es">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Marcos Medina Subero — Proyectos (Data Analytics)</title>
+    <title>Marcos Medina Subero — Proyectos (Datos y Automatización)</title>
+
     <meta
       name="description"
-      content="Proyectos de Data Analytics en Operaciones: OEE, mejora continua, reporting, SQL, automatización y optimización de rendimiento. Casos orientados a impacto."
+      content="Proyectos de datos, análisis y automatización: dashboards, SQL, workflows n8n, IA aplicada y optimización de procesos."
     />
+
     <meta name="robots" content="index,follow" />
     <meta name="theme-color" content="#0b1320" />
     <link rel="canonical" href="proyectos-data.html" />
 
-    <meta property="og:title" content="Marcos Medina Subero — Proyectos Data Analytics" />
-    <meta
-      property="og:description"
-      content="Casos de Data Analytics orientados a negocio: OEE, dashboards, SQL, automatización y rendimiento."
-    />
+    <meta property="og:title" content="Marcos Medina Subero — Proyectos de Datos y Automatización" />
+    <meta property="og:description" content="Proyectos de análisis, BI, SQL y automatización con workflows y agentes IA." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="proyectos-data.html" />
 
@@ -75,28 +73,49 @@
     </header>
 
     <main id="main">
-      <section class="section hero" aria-label="Proyectos Sencillos de Data Analytics en Operaciones">
+      <!-- HERO -->
+      <section class="section hero" aria-label="Proyectos de datos y automatización">
         <div class="container">
           <div class="sectionHead">
             <h1 class="heroTitle reveal">
-              Proyectos Sencillos de
-              <span class="accent">Análisis de Datos</span>
+              Proyectos de <span class="accent">Datos, Análisis y Automatización</span>
             </h1>
+
             <p class="sectionLead sectionLeadFull reveal">
-              Casos centrados en eficiencia operativa y toma de decisiones basada en datos: identificación de causas raíz, priorización 
-              de palancas de mejora y estimación de impacto económico. Los datasets están anonimizados para preservar confidencialidad, 
-              pero reproducen estructuras, complejidad y dinámicas reales de entornos industriales.
+              Aquí reúno algunos proyectos personales donde exploro distintas formas de trabajar con datos,
+              construir reporting útil y diseñar automatizaciones que simplifiquen tareas repetitivas.
+            </p>
+
+            <p class="sectionLead sectionLeadFull reveal">
+              Incluyen análisis operativos, visualización de datos, optimización mediante SQL y experimentos
+              con workflows automatizados y agentes IA utilizando herramientas como n8n, Supabase y Airtable.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <!-- DATA ANALYTICS -->
+          <div class="sectionHead">
+            <h2 class="sectionTitleLite reveal">Data Analytics</h2>
+            <p class="sectionLead reveal">
+              Análisis operativo, diagnóstico de eficiencia y visualización de datos
+              para apoyar decisiones de negocio.
             </p>
           </div>
 
-          <div class="projectsGrid" id="projectsGrid">
-            
-            <article class="projectCard reveal" data-tags="operaciones eficiencia oee performance availability downtime google-sheets mejora-continua root-cause pareto">
+          <div class="projectsGrid">
+            <article class="projectCard reveal">
               <p class="trustBig">Eficiencia productiva</p>
-              <h3 class="cardTitle">Diagnóstico OEE y pérdidas de performance en línea industrial</h3>
+
+              <h3 class="cardTitle">
+                Diagnóstico OEE y pérdidas de performance en línea industrial
+              </h3>
+
               <p class="cardText">
-                Caso simulado (6 meses, 4 líneas, 3 turnos) para identificar el driver real del gap de OEE y convertirlo en una recomendación operativa accionable.
-                Aislamiento de un outlier por línea, cruce performance + mix de producto y estimación de impacto en capacidad y coste.
+                Caso simulado (6 meses, 4 líneas, 3 turnos) para identificar el driver real del gap
+                de OEE y convertirlo en una recomendación operativa accionable.
               </p>
 
               <ul class="chipRow" aria-label="Tecnologías">
@@ -114,37 +133,58 @@
               </div>
             </article>
 
-            
-            <article class="projectCard reveal" data-tags="looker-studio dataviz dashboard filtros oee operaciones performance">
+            <article class="projectCard reveal">
               <p class="trustBig">Visualización con Looker Studio</p>
-              <h3 class="cardTitle">Dashboard interactivo OEE · Capa de visualización sobre dataset simulado</h3>
+
+              <h3 class="cardTitle">
+                Dashboard interactivo OEE · Capa de visualización
+              </h3>
+
               <p class="cardText">
-                En este apartado se presenta un breve informe en Looker Studio para explorar el mismo modelo (turno–línea–familia) con filtros,
-                comparativa por línea y diagnóstico por mix de producto. 
+                Informe interactivo para explorar el modelo turno–línea–familia con filtros,
+                comparativa por línea y diagnóstico por mix de producto.
               </p>
 
-              <ul class="chipRow" aria-label="Tecnologías">
+              <ul class="chipRow">
                 <li class="chip">Looker Studio</li>
                 <li class="chip">Dashboards</li>
                 <li class="chip">Storytelling</li>
               </ul>
 
-              <div class="primaryCtas" style="margin-top:18px;">
-                <a class="btn btnPrimary btnSm" href="proyecto-looker-oee.html">Ver dashboard</a>
+              <div class="primaryCtas">
+                <a class="btn btnPrimary btnSm" href="proyecto-looker-oee.html">
+                  Ver dashboard
+                </a>
               </div>
             </article>
+          </div>
 
-            
-            <article class="projectCard reveal" data-tags="python oee xgboost shap explicabilidad interpretabilidad industria operaciones downtime performance timeseries cv feature-engineering">
+          <!-- MODELADO -->
+          <div class="sectionHead" style="margin-top:60px">
+            <h2 class="sectionTitleLite reveal">
+              Modelado y análisis avanzado
+            </h2>
+
+            <p class="sectionLead reveal">
+              Experimentos con Python y modelos explicativos para identificar drivers operativos
+              y generar insights accionables.
+            </p>
+          </div>
+
+          <div class="projectsGrid">
+            <article class="projectCard reveal">
               <p class="trustBig">OEE avanzado (Python)</p>
-              <h3 class="cardTitle">Modelos explicativos para drivers de Downtime y Performance (XGBoost + SHAP)</h3>
+
+              <h3 class="cardTitle">
+                Drivers de Downtime y Performance (XGBoost + SHAP)
+              </h3>
+
               <p class="cardText">
-                Caso simulado a nivel turno–línea–familia para explicar qué factores empujan el downtime_rate y el perf_gap.
-                Entrenamiento con split temporal (TimeSeriesSplit), pipeline con OneHotEncoder y generación de insights accionables:
-                ranking global de drivers y análisis local para segmentos críticos (p. ej., L4 · turno M · Envase 250ml).
+                Modelo explicativo para identificar factores que impactan el downtime_rate
+                y el perf_gap en entornos industriales.
               </p>
 
-              <ul class="chipRow" aria-label="Tecnologías">
+              <ul class="chipRow">
                 <li class="chip">Python</li>
                 <li class="chip">XGBoost</li>
                 <li class="chip">SHAP</li>
@@ -158,63 +198,87 @@
                 </a>
               </div>
             </article>
+          </div>
 
-            <article class="projectCard reveal"
-              data-tags="sql postgresql power-bi powerbi rendimiento performance calidad-datos deduplicacion joins indexing cte window-functions explain etl modelado">
-              <p class="trustBig">SQL para PowerBI</p>
-              <h3 class="cardTitle">Rendimiento, calidad de datos y reporting avanzado</h3>
+          <!-- SQL / BI -->
+          <div class="sectionHead" style="margin-top:60px">
+            <h2 class="sectionTitleLite reveal">
+              BI & SQL Engineering
+            </h2>
+
+            <p class="sectionLead reveal">
+              Construcción de capas de datos preparadas para reporting y dashboards,
+              con foco en rendimiento y calidad de datos.
+            </p>
+          </div>
+
+          <div class="projectsGrid">
+            <article class="projectCard reveal">
+              <p class="trustBig">SQL para Power BI</p>
+
+              <h3 class="cardTitle">
+                Capa SQL optimizada para reporting
+              </h3>
+
               <p class="cardText">
-                Construcción de una capa SQL “BI-ready” sobre dataset tipo ERP para consumo en Power BI: joins correctos y granularidad estable,
-                control de duplicados, optimización con índices y reporting avanzado con CTEs y funciones de ventana.
+                Construcción de una capa SQL preparada para consumo en BI:
+                joins correctos, control de duplicados y optimización con índices.
               </p>
 
-              <ul class="chipRow" aria-label="Tecnologías">
+              <ul class="chipRow">
                 <li class="chip">PostgreSQL</li>
                 <li class="chip">Power BI</li>
-                <li class="chip">EXPLAIN</li>
                 <li class="chip">Indexing</li>
                 <li class="chip">CTEs</li>
                 <li class="chip">Window Functions</li>
               </ul>
 
               <div class="primaryCtas">
-                <a class="btn btnPrimary btnSm" href="proyecto-sql-powerbi.html">Ver proyecto</a>
+                <a class="btn btnPrimary btnSm" href="proyecto-sql-powerbi.html">
+                  Ver proyecto
+                </a>
               </div>
             </article>
+          </div>
 
-            <article class="projectCard reveal"
-              data-tags="ai automation n8n agents llm supabase airtable workflow automation data-engineering">
-              
+          <!-- AUTOMATIZACIÓN -->
+          <div class="sectionHead" style="margin-top:60px">
+            <h2 class="sectionTitleLite reveal">
+              Automatización & AI Agents
+            </h2>
+
+            <p class="sectionLead reveal">
+              Workflows automatizados y agentes basados en IA que conectan APIs,
+              bases de datos y herramientas externas.
+            </p>
+          </div>
+
+          <div class="projectsGrid">
+            <article class="projectCard reveal">
               <p class="trustBig">Agentes IA · Automatización</p>
-              
+
               <h3 class="cardTitle">
-                Asistente financiero con agentes IA (n8n + Supabase + Airtable)
+                Asistente financiero con agentes IA (n8n)
               </h3>
-            
+
               <p class="cardText">
-                Desarrollé un asistente financiero basado en agentes IA capaz de analizar gastos,
-                consultar presupuestos mensuales y registrar nuevos movimientos automáticamente.
-                El sistema utiliza n8n como motor de automatización, memoria conversacional en
-                PostgreSQL (Supabase) y almacenamiento estructurado de datos en Airtable.
-                El agente puede interpretar mensajes del usuario y ejecutar acciones sobre la base
-                de datos mediante herramientas conectadas al workflow.
+                Asistente capaz de analizar gastos, consultar presupuestos y registrar
+                movimientos automáticamente utilizando workflows en n8n.
               </p>
-            
-              <ul class="chipRow" aria-label="Tecnologías">
+
+              <ul class="chipRow">
                 <li class="chip">n8n</li>
                 <li class="chip">AI Agents</li>
                 <li class="chip">OpenAI</li>
                 <li class="chip">Supabase</li>
                 <li class="chip">Airtable</li>
-                <li class="chip">Automation</li>
               </ul>
-            
+
               <div class="primaryCtas">
                 <a class="btn btnPrimary btnSm" href="proyecto-ai-finance-agent.html">
                   Próximamente
                 </a>
               </div>
-            
             </article>
           </div>
         </div>
@@ -224,13 +288,30 @@
     <footer class="site-footer">
       <div class="container footerInner">
         <div class="footerRight">
-          <a class="footerLink" href="https://www.linkedin.com/in/marcos-medina-subero-971167247/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a class="footerLink" href="https://wa.me/34699616190?text=Hola%20Marcos%2C%20me%20interesa%20una%20propuesta%20de%20Data%20Analytics%20(Operaciones%20%2F%20OEE%20%2F%20Dashboards)." target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          <a
+            class="footerLink"
+            href="https://www.linkedin.com/in/marcos-medina-subero-971167247/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </a>
+
+          <a
+            class="footerLink"
+            href="https://wa.me/34699616190"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            WhatsApp
+          </a>
         </div>
       </div>
 
       <div class="container footerBottom">
-        <p class="footerSmall">© <span id="year"></span> Marcos Medina Subero. Todos los derechos reservados.</p>
+        <p class="footerSmall">
+          © <span id="year"></span> Marcos Medina Subero. Todos los derechos reservados.
+        </p>
       </div>
     </footer>
 
