@@ -4,19 +4,19 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Marcos Medina Subero — Proyecto · Agente financiero con IA y automatización</title>
+    <title>Marcos Medina Subero — Proyecto · Agente financiero con IA en n8n</title>
     <meta
       name="description"
-      content="Proyecto de automatización con n8n, agente IA, memoria conversacional y tools conectadas para consulta de gastos, presupuesto e inserción de movimientos."
+      content="Workflow de n8n con agente IA para consultar gastos, revisar presupuesto e insertar movimientos de forma conversacional."
     />
     <meta name="robots" content="index,follow" />
     <meta name="theme-color" content="#0b1320" />
     <link rel="canonical" href="proyecto-ai-finance-agent.html" />
 
-    <meta property="og:title" content="Marcos Medina Subero — Proyecto · Agente financiero con IA y automatización" />
+    <meta property="og:title" content="Marcos Medina Subero — Proyecto · Agente financiero con IA en n8n" />
     <meta
       property="og:description"
-      content="Agente financiero construido en n8n con memoria conversacional, tools conectadas y arquitectura orientada a automatización real."
+      content="Workflow de automatización con n8n, memoria conversacional y tools conectadas para consulta y registro de datos financieros."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="proyecto-ai-finance-agent.html" />
@@ -25,6 +25,154 @@
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="preload" href="css/data.css" as="style" />
     <link rel="stylesheet" href="css/data.css" />
+
+    <style>
+      .workflowPageTop{
+        padding-top: 28px;
+      }
+
+      .workflowShell{
+        display:grid;
+        grid-template-columns: 300px minmax(0, 1fr);
+        gap:40px;
+        align-items:start;
+      }
+
+      .workflowSidebar{
+        position:sticky;
+        top:96px;
+        align-self:start;
+      }
+
+      .workflowBack{
+        display:inline-flex;
+        align-items:center;
+        gap:8px;
+        font-size:.95rem;
+        color:rgba(255,255,255,.72);
+        text-decoration:none;
+        margin-bottom:26px;
+      }
+
+      .workflowBack:hover{
+        color:#fff;
+      }
+
+      .workflowMiniRow{
+        display:flex;
+        gap:10px;
+        flex-wrap:wrap;
+        margin-bottom:18px;
+      }
+
+      .workflowMiniBadge{
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        min-width:40px;
+        height:40px;
+        padding:0 12px;
+        border-radius:12px;
+        border:1px solid rgba(255,255,255,.08);
+        background:rgba(255,255,255,.05);
+        color:rgba(255,255,255,.88);
+        font-size:.86rem;
+      }
+
+      .workflowTitle{
+        font-size:clamp(2.2rem, 4.6vw, 4.2rem);
+        line-height:.95;
+        letter-spacing:-0.05em;
+        font-weight:800;
+        color:#fff;
+        margin-bottom:18px;
+        max-width:10ch;
+      }
+
+      .workflowSidebarText{
+        font-size:1rem;
+        line-height:1.65;
+        color:rgba(255,255,255,.68);
+        max-width:28ch;
+        margin-bottom:22px;
+      }
+
+      .workflowCtaWrap{
+        margin-bottom:34px;
+      }
+
+      .workflowMeta{
+        display:grid;
+        gap:18px;
+      }
+
+      .workflowMetaBlock{
+        padding-top:14px;
+        border-top:1px solid rgba(255,255,255,.08);
+      }
+
+      .workflowMetaLabel{
+        font-size:.75rem;
+        letter-spacing:.08em;
+        text-transform:uppercase;
+        color:rgba(255,255,255,.42);
+        margin-bottom:6px;
+      }
+
+      .workflowMetaValue{
+        color:rgba(255,255,255,.9);
+        line-height:1.5;
+        font-size:.98rem;
+      }
+
+      .workflowMain{
+        min-width:0;
+      }
+
+      .workflowPreviewCard{
+        margin:0;
+        padding:12px;
+        border-radius:24px;
+        border:1px solid rgba(255,255,255,.08);
+        background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.025));
+        box-shadow:0 30px 70px rgba(0,0,0,.28);
+      }
+
+      .workflowPreviewCard img{
+        display:block;
+        width:100%;
+        height:auto;
+        border-radius:16px;
+      }
+
+      .workflowBody{
+        margin-top:46px;
+      }
+
+      .workflowBody .sectionHead{
+        max-width:980px;
+      }
+
+      @media (max-width: 1100px){
+        .workflowShell{
+          grid-template-columns:1fr;
+          gap:28px;
+        }
+
+        .workflowSidebar{
+          position:relative;
+          top:auto;
+        }
+
+        .workflowTitle{
+          max-width:none;
+        }
+
+        .workflowSidebarText{
+          max-width:none;
+        }
+      }
+    </style>
   </head>
 
   <body class="dataProject">
@@ -74,371 +222,141 @@
     </header>
 
     <main id="main">
-      <section class="section hero" aria-label="Proyecto: agente financiero con IA y automatización">
-        <div class="container">
-          <div class="sectionHead">
-            <h1 class="heroTitle reveal">
-              Agente financiero con <span class="accent">IA + automatización</span> en n8n
+      <section class="section workflowPageTop" aria-label="Proyecto workflow n8n">
+        <div class="container workflowShell">
+          <aside class="workflowSidebar reveal">
+            <a class="workflowBack" href="proyectos-data.html">
+              <span aria-hidden="true">←</span>
+              <span>Volver a proyectos</span>
+            </a>
+
+            <div class="workflowMiniRow" aria-label="Stack rápido">
+              <span class="workflowMiniBadge">n8n</span>
+              <span class="workflowMiniBadge">AI</span>
+              <span class="workflowMiniBadge">DB</span>
+              <span class="workflowMiniBadge">+3</span>
+            </div>
+
+            <h1 class="workflowTitle">
+              Asistente financiero con IA en n8n
             </h1>
 
-            <p class="sectionLead sectionLeadFull reveal">
-              En este proyecto reconstruí y adapté un asistente financiero basado en agentes IA dentro de n8n, con memoria conversacional,
-              herramientas conectadas a datos estructurados y capacidad para responder consultas, revisar presupuesto disponible e insertar
-              nuevos movimientos desde una conversación natural. El interés del caso no está en “hacer un chatbot”, sino en diseñar una
-              arquitectura clara: entrada conversacional, razonamiento del agente, persistencia de contexto y ejecución de acciones sobre
-              sistemas externos.
+            <p class="workflowSidebarText">
+              Workflow conversacional pensado para consultar gastos, revisar presupuesto e insertar movimientos automáticamente con ayuda de un agente conectado a datos reales.
             </p>
 
-            <div class="projectsGrid">
-              <article class="projectCard reveal">
-                <p class="trustBig">Objetivo</p>
-                <p class="cardText">
-                  Construir un flujo conversacional útil para un caso real de finanzas personales, evitando una demo superficial y priorizando
-                  arquitectura, mantenibilidad y capacidad de extensión.
-                </p>
-              </article>
-
-              <article class="projectCard reveal">
-                <p class="trustBig">Entregables</p>
-                <p class="cardText">
-                  Workflow operativo en n8n + memoria conversacional persistente + tools conectadas a datos de gasto/presupuesto +
-                  base reutilizable para evolución futura a una solución más robusta.
-                </p>
-              </article>
-
-              <article class="projectCard reveal">
-                <p class="trustBig">Valor del caso</p>
-                <p class="cardText">
-                  El proyecto demuestra cómo llevar un agente IA desde el prototipo conversacional a una solución conectada a datos reales,
-                  con criterio de arquitectura y lectura profesional.
-                </p>
-              </article>
+            <div class="workflowCtaWrap">
+              <a class="btn btnPrimary btnFull" href="#implementacion">
+                Me interesa este workflow
+              </a>
             </div>
-          </div>
-        </div>
-      </section>
 
-      <section class="section" aria-label="Resumen ejecutivo">
-        <div class="container">
-          <div class="aboutGrid">
-            <div class="aboutCopy">
-              <p class="trustBig reveal">Resumen ejecutivo</p>
+            <div class="workflowMeta" aria-label="Información del proyecto">
+              <div class="workflowMetaBlock">
+                <p class="workflowMetaLabel">Tipo</p>
+                <p class="workflowMetaValue">Workflow con AI Agent</p>
+              </div>
 
-              <p class="sectionLead sectionLeadFull reveal">
-                El flujo parte de un chat trigger en n8n y delega la interpretación de cada mensaje en un AI Agent. Ese agente decide si debe
-                responder directamente o llamar a una herramienta concreta para consultar gastos, revisar presupuesto o registrar un nuevo
-                movimiento. Para mantener coherencia entre mensajes, la memoria conversacional se persiste en PostgreSQL. La arquitectura es
-                deliberadamente simple: separar conversación, memoria y tools permite explicar con claridad qué hace cada componente, reducir
-                ambigüedad operativa y dejar una base limpia para una evolución posterior hacia SQL nativo, validaciones adicionales o una capa
-                de reporting más avanzada.
-              </p>
+              <div class="workflowMetaBlock">
+                <p class="workflowMetaLabel">Stack</p>
+                <p class="workflowMetaValue">n8n · OpenAI · Supabase · Airtable</p>
+              </div>
+
+              <div class="workflowMetaBlock">
+                <p class="workflowMetaLabel">Caso de uso</p>
+                <p class="workflowMetaValue">Consulta y registro de datos financieros</p>
+              </div>
+
+              <div class="workflowMetaBlock">
+                <p class="workflowMetaLabel">Disponible para</p>
+                <p class="workflowMetaValue">Uso personal y adaptación guiada</p>
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
+          </aside>
 
-      <section class="section" aria-label="Planteamiento">
-        <div class="container">
-          <div class="sectionHead">
-            <p class="trustBig reveal">Planteamiento</p>
-          </div>
+          <div class="workflowMain">
+            <figure class="workflowPreviewCard reveal">
+              <img
+                src="assets/projects/ai-finance-agent/workflow-general.png"
+                alt="Workflow completo del agente financiero en n8n con el chat activado"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
 
-          <div class="projectsGrid mt12">
-            <article class="projectCard reveal">
-              <p class="trustBig">Problema a resolver</p>
-              <ul class="cardList">
-                <li>Permitir consultas financieras en lenguaje natural sin exponer la complejidad técnica del backend.</li>
-                <li>Centralizar lógica conversacional, memoria y herramientas dentro de un workflow reproducible.</li>
-                <li>Demostrar utilidad real: no solo responder, sino también operar sobre datos.</li>
-              </ul>
-            </article>
+            <div class="workflowBody">
+              <section class="section" aria-label="Descripción del workflow">
+                <div class="sectionHead">
+                  <h2 class="heroTitle reveal">Qué hace este workflow</h2>
 
-            <article class="projectCard reveal">
-              <p class="trustBig">Decisiones técnicas</p>
-              <ul class="cardList">
-                <li>Uso de n8n como capa de orquestación para mantener el flujo legible y modular.</li>
-                <li>AI Agent como nodo central de decisión para interpretar intención y seleccionar tools.</li>
-                <li>Persistencia de contexto mediante Postgres Chat Memory para evitar conversaciones “sin memoria”.</li>
-              </ul>
-            </article>
+                  <p class="sectionLead sectionLeadFull reveal">
+                    Este modelo combina una interfaz conversacional, un agente de IA, memoria persistente y herramientas conectadas para trabajar sobre datos financieros de forma natural. El usuario puede hacer preguntas sobre sus gastos, revisar cuánto presupuesto le queda en una categoría concreta o registrar nuevos movimientos sin interactuar directamente con tablas o bases de datos.
+                  </p>
+                </div>
 
-            <article class="projectCard reveal">
-              <p class="trustBig">Lectura de portfolio</p>
-              <ul class="cardList">
-                <li>Reconstrucción fiel del workflow original antes de plantear mejoras opcionales.</li>
-                <li>Explicación orientada a arquitectura y no solo a interfaz o prompt.</li>
-                <li>Base suficientemente sólida como para presentar el proyecto como caso técnico, no como experimento aislado.</li>
-              </ul>
-            </article>
-          </div>
-        </div>
-      </section>
+                <div class="projectsGrid mt12">
+                  <article class="projectCard reveal">
+                    <p class="trustBig">Chat como interfaz</p>
+                    <p class="cardText">
+                      El flujo utiliza conversación natural como punto de entrada para que consultar o registrar datos sea más sencillo.
+                    </p>
+                  </article>
 
-      <section class="section" aria-label="Arquitectura y criterios de diseño">
-        <div class="container">
-          <div class="sectionHead mt12">
-            <p class="trustBig reveal">Arquitectura</p>
-            <p class="sectionLead sectionLeadFull reveal">
-              La solución se organiza en capas sencillas y auditables. Esta separación permite razonar con facilidad sobre cada componente,
-              detectar cuellos de botella y explicar el sistema con un lenguaje comprensible tanto para perfil técnico como para negocio.
-            </p>
-          </div>
+                  <article class="projectCard reveal">
+                    <p class="trustBig">Memoria conversacional</p>
+                    <p class="cardText">
+                      La memoria permite mantener contexto entre mensajes y hacer el uso del agente más coherente y cómodo.
+                    </p>
+                  </article>
 
-          <div class="projectsGrid mt12">
-            <article class="projectCard reveal">
-              <p class="trustBig">Entrada conversacional</p>
-              <p class="cardText">
-                El chat trigger de n8n actúa como punto de entrada único. Cada mensaje del usuario se transforma en input del workflow y se
-                entrega al agente con una estructura controlada.
-              </p>
-            </article>
+                  <article class="projectCard reveal">
+                    <p class="trustBig">Datos conectados</p>
+                    <p class="cardText">
+                      El workflow no solo responde: también consulta y escribe sobre las herramientas conectadas.
+                    </p>
+                  </article>
+                </div>
+              </section>
 
-            <article class="projectCard reveal">
-              <p class="trustBig">Razonamiento del agente</p>
-              <p class="cardText">
-                El AI Agent interpreta la intención, evalúa si necesita datos externos y decide qué herramienta debe invocar. Esta capa evita
-                lógica rígida basada solo en reglas y permite una interacción más natural.
-              </p>
-            </article>
+              <section class="section" id="implementacion" aria-label="Implementación del workflow">
+                <div class="sectionHead">
+                  <h2 class="heroTitle reveal">Si te interesa, puedo ayudarte a implementarlo</h2>
 
-            <article class="projectCard reveal">
-              <p class="trustBig">Persistencia de contexto</p>
-              <p class="cardText">
-                La memoria en PostgreSQL permite continuidad entre mensajes, reduce repeticiones y mejora la coherencia de la conversación en
-                escenarios donde el usuario formula preguntas encadenadas.
-              </p>
-            </article>
+                  <p class="sectionLead sectionLeadFull reveal">
+                    Este workflow puede adaptarse para uso personal en distintos dispositivos o ajustarse a otros contextos donde tenga sentido combinar conversación, datos y automatización. Si te interesa una solución así, puedo ayudarte a revisar el caso, adaptar el flujo y dejar una versión funcional para tu entorno.
+                  </p>
+                </div>
 
-            <article class="projectCard reveal">
-              <p class="trustBig">Capa de tools</p>
-              <p class="cardText">
-                Las herramientas separan claramente lectura e inserción de datos: consultar gastos, consultar presupuesto e insertar
-                movimientos. Esto simplifica mantenimiento y facilita futuras migraciones de backend.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
+                <div class="projectsGrid mt12">
+                  <article class="projectCard reveal">
+                    <p class="trustBig">Qué se puede adaptar</p>
+                    <p class="cardText">
+                      La lógica del workflow puede reutilizarse para otros casos de consulta de datos, registro automático o seguimiento personal.
+                    </p>
+                  </article>
 
-      <section class="section" aria-label="Buenas prácticas y límites">
-        <div class="container">
-          <div class="sectionHead mt12">
-            <p class="trustBig reveal">Buenas prácticas</p>
-            <p class="sectionLead sectionLeadFull reveal">
-              Más allá de “hacerlo funcionar”, el proyecto se apoya en una serie de decisiones que mejoran su lectura técnica y su valor como
-              pieza de portfolio.
-            </p>
-          </div>
+                  <article class="projectCard reveal">
+                    <p class="trustBig">Cómo sería el proceso</p>
+                    <p class="cardText">
+                      Primero reviso tu caso y la estructura de los datos. Después adapto el workflow y te ayudo a dejarlo listo para usarlo en tu propio entorno.
+                    </p>
+                  </article>
 
-          <div class="projectsGrid mt12">
-            <article class="projectCard reveal">
-              <p class="trustBig">Separación de responsabilidades</p>
-              <ul class="cardList">
-                <li>El chat captura la entrada.</li>
-                <li>El agente decide.</li>
-                <li>La memoria persiste contexto.</li>
-                <li>Las tools ejecutan operaciones sobre datos.</li>
-              </ul>
-            </article>
+                  <article class="projectCard reveal">
+                    <p class="trustBig">Para quién encaja</p>
+                    <p class="cardText">
+                      Puede ser útil para personas que quieran organizar mejor su información y automatizar tareas sencillas sin complicarse con una arquitectura compleja.
+                    </p>
+                  </article>
+                </div>
 
-            <article class="projectCard reveal">
-              <p class="trustBig">Mantenibilidad</p>
-              <ul class="cardList">
-                <li>Workflow suficientemente legible como para explicar el sistema de extremo a extremo.</li>
-                <li>Naming claro en nodos y separación entre capacidades.</li>
-                <li>Base preparada para documentar ampliaciones sin rehacer la estructura.</li>
-              </ul>
-            </article>
-
-            <article class="projectCard reveal">
-              <p class="trustBig">Limitaciones actuales</p>
-              <ul class="cardList">
-                <li>Versión centrada en una lógica financiera acotada: gasto, presupuesto y alta de movimientos.</li>
-                <li>Sin capa avanzada de autenticación por usuario final.</li>
-                <li>Sin validaciones financieras complejas ni reporting analítico embebido en esta fase.</li>
-              </ul>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" aria-label="Evidencia visual del proyecto">
-        <div class="container">
-          <div class="sectionHead">
-            <p class="eyebrow reveal">Workflow · Arquitectura · Conversación</p>
-            <h2 class="heroTitle reveal">Visualizaciones clave</h2>
-          </div>
-
-          <div class="projectsGrid">
-            <article class="projectCard reveal">
-              <p class="trustBig">1) Workflow general</p>
-              <p class="cardText">
-                Vista completa del flujo en n8n: trigger, agente, modelo, memoria y herramientas conectadas.
-              </p>
-              <figure class="mt12">
-                <img
-                  src="assets/projects/ai-finance-agent/workflow-general.png"
-                  alt="Workflow general del agente financiero en n8n"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </figure>
-            </article>
-
-            <article class="projectCard reveal">
-              <p class="trustBig">2) Configuración del agente</p>
-              <p class="cardText">
-                Prompt, herramientas disponibles y lógica de decisión del nodo central del sistema.
-              </p>
-              <figure class="mt12">
-                <img
-                  src="assets/projects/ai-finance-agent/agent-config.png"
-                  alt="Configuración del AI Agent en n8n"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </figure>
-            </article>
-
-            <article class="projectCard reveal">
-              <p class="trustBig">3) Memoria y capa de datos</p>
-              <p class="cardText">
-                Persistencia del contexto conversacional y conexión con las tablas de gasto y presupuesto.
-              </p>
-              <figure class="mt12">
-                <img
-                  src="assets/projects/ai-finance-agent/memory-data.png"
-                  alt="Memoria conversacional y conexión de datos del agente financiero"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </figure>
-            </article>
-
-            <article class="projectCard reveal">
-              <p class="trustBig">4) Chatbot en funcionamiento</p>
-              <p class="cardText">
-                Ejemplo de interacción real con el asistente: consulta, razonamiento y respuesta apoyada en tools.
-              </p>
-              <figure class="mt12">
-                <img
-                  src="assets/projects/ai-finance-agent/chatbot-demo.png"
-                  alt="Ejemplo de conversación con el agente financiero"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </figure>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" aria-label="Capacidades del agente">
-        <div class="container">
-          <div class="projectsGrid">
-            <article class="projectCard reveal">
-              <p class="trustBig">Consulta de gasto</p>
-              <p class="cardText">
-                El agente puede recuperar movimientos registrados y responder preguntas sobre categorías, volumen acumulado o consumo reciente.
-              </p>
-            </article>
-
-            <article class="projectCard reveal">
-              <p class="trustBig">Seguimiento de presupuesto</p>
-              <p class="cardText">
-                La lógica permite contrastar lo presupuestado frente a lo ya gastado y devolver una lectura resumida y operativa para el usuario.
-              </p>
-            </article>
-
-            <article class="projectCard reveal">
-              <p class="trustBig">Inserción de movimientos</p>
-              <p class="cardText">
-                El flujo no se limita a consulta: puede registrar nuevos gastos, lo que lo convierte en un sistema transaccional sencillo y no
-                solo en una capa de respuesta.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" aria-label="Stack técnico">
-        <div class="container">
-          <div class="sectionHead">
-            <p class="trustBig reveal">Stack técnico</p>
-          </div>
-
-          <div class="projectsGrid mt12">
-            <article class="projectCard reveal">
-              <p class="trustBig">Orquestación</p>
-              <p class="cardText">
-                n8n como plataforma de automatización y construcción del workflow principal.
-              </p>
-            </article>
-
-            <article class="projectCard reveal">
-              <p class="trustBig">IA y decisión</p>
-              <p class="cardText">
-                AI Agent + modelo LLM para interpretar intención, decidir uso de tools y generar respuesta final.
-              </p>
-            </article>
-
-            <article class="projectCard reveal">
-              <p class="trustBig">Persistencia</p>
-              <p class="cardText">
-                PostgreSQL / Supabase para la memoria conversacional del agente y continuidad entre sesiones.
-              </p>
-            </article>
-
-            <article class="projectCard reveal">
-              <p class="trustBig">Datos operativos</p>
-              <p class="cardText">
-                Airtable como almacenamiento estructurado de gastos y presupuestos en la versión original del proyecto.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" aria-label="Resultados e impacto">
-        <div class="container">
-          <div class="projectsGrid">
-            <article class="projectCard reveal">
-              <p class="trustBig">Resultado técnico</p>
-              <p class="cardText">
-                El proyecto demuestra cómo pasar de un flujo experimental a una solución explicable, conectada a datos reales y suficientemente
-                ordenada como para presentarse como caso técnico completo.
-              </p>
-            </article>
-
-            <article class="projectCard reveal">
-              <p class="trustBig">Lectura profesional</p>
-              <p class="cardText">
-                El valor principal no está en la interfaz, sino en la arquitectura: memoria, tools, persistencia y una lógica lo bastante clara
-                como para ser mantenida, extendida y explicada.
-              </p>
-            </article>
-
-            <article class="projectCard reveal">
-              <p class="trustBig">Escalabilidad</p>
-              <p class="cardText">
-                La base admite evolución hacia SQL nativo, validaciones más estrictas, autenticación por usuario, observabilidad del workflow y
-                una capa analítica adicional sobre las finanzas registradas.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" aria-label="Conclusión">
-        <div class="container">
-          <div class="sectionHead">
-            <p class="trustBig reveal">Conclusión</p>
-            <p class="sectionLead sectionLeadFull reveal">
-              Este caso resume una línea de trabajo que me interesa especialmente: combinar automatización, datos e IA aplicada a procesos
-              concretos. El valor real aparece cuando el agente no solo conversa, sino que entiende intención, mantiene contexto y opera sobre
-              sistemas externos de forma útil. Como proyecto de portfolio, me permite mostrar criterio técnico, enfoque de arquitectura y una
-              aplicación práctica de agentes IA más allá de la demo.
-            </p>
+                <div class="primaryCtas" style="margin-top:20px;">
+                  <a class="btn btnPrimary btnSm" href="contacto-data.html">
+                    Contactar para implementarlo
+                  </a>
+                </div>
+              </section>
+            </div>
           </div>
         </div>
       </section>
@@ -448,7 +366,7 @@
       <div class="container footerInner">
         <div class="footerRight">
           <a class="footerLink" href="https://www.linkedin.com/in/marcos-medina-subero-971167247/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a class="footerLink" href="https://wa.me/34699616190?text=Hola%20Marcos%2C%20me%20interesa%20tu%20proyecto%20de%20agente%20financiero%20con%20IA%20y%20automatizaci%C3%B3n." target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          <a class="footerLink" href="https://wa.me/34699616190?text=Hola%20Marcos%2C%20me%20interesa%20tu%20workflow%20de%20n8n." target="_blank" rel="noopener noreferrer">WhatsApp</a>
         </div>
       </div>
 
