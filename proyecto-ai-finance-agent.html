@@ -27,149 +27,178 @@
     <link rel="stylesheet" href="css/data.css" />
 
     <style>
-      .workflowPageTop{
+      .workflowPageTop {
         padding-top: 28px;
       }
 
-      .workflowShell{
-        display:grid;
+      .workflowShell {
+        display: grid;
         grid-template-columns: 300px minmax(0, 1fr);
-        gap:40px;
-        align-items:start;
+        gap: 40px;
+        align-items: start;
       }
 
-      .workflowSidebar{
-        position:sticky;
-        top:96px;
-        align-self:start;
+      .workflowSidebar {
+        position: sticky;
+        top: 96px;
+        align-self: start;
       }
 
-      .workflowBack{
-        display:inline-flex;
-        align-items:center;
-        gap:8px;
-        font-size:.95rem;
-        color:rgba(255,255,255,.72);
-        text-decoration:none;
-        margin-bottom:26px;
+      .workflowBack {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.72);
+        text-decoration: none;
+        margin-bottom: 26px;
       }
 
-      .workflowBack:hover{
-        color:#fff;
+      .workflowBack:hover {
+        color: #fff;
       }
 
-      .workflowMiniRow{
-        display:flex;
-        gap:10px;
-        flex-wrap:wrap;
-        margin-bottom:18px;
+      .workflowMiniRow {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 18px;
       }
 
-      .workflowMiniBadge{
-        display:inline-flex;
-        align-items:center;
-        justify-content:center;
-        min-width:40px;
-        height:40px;
-        padding:0 12px;
-        border-radius:12px;
-        border:1px solid rgba(255,255,255,.08);
-        background:rgba(255,255,255,.05);
-        color:rgba(255,255,255,.88);
-        font-size:.86rem;
+      .workflowMiniBadge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 40px;
+        height: 40px;
+        padding: 0 12px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.05);
+        color: rgba(255, 255, 255, 0.88);
+        font-size: 0.86rem;
       }
 
-      .workflowTitle{
-        font-size:clamp(2.2rem, 4.6vw, 4.2rem);
-        line-height:.95;
-        letter-spacing:-0.05em;
-        font-weight:800;
-        color:#fff;
-        margin-bottom:18px;
-        max-width:10ch;
+      .workflowTitle {
+        font-size: clamp(2.2rem, 4.6vw, 4.2rem);
+        line-height: 0.95;
+        letter-spacing: -0.05em;
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 18px;
+        max-width: 10ch;
       }
 
-      .workflowSidebarText{
-        font-size:1rem;
-        line-height:1.65;
-        color:rgba(255,255,255,.68);
-        max-width:28ch;
-        margin-bottom:22px;
+      .workflowSidebarText {
+        font-size: 1rem;
+        line-height: 1.65;
+        color: rgba(255, 255, 255, 0.68);
+        max-width: 28ch;
+        margin-bottom: 22px;
       }
 
-      .workflowCtaWrap{
-        margin-bottom:34px;
+      .workflowCtaWrap {
+        margin-bottom: 34px;
       }
 
-      .workflowMeta{
-        display:grid;
-        gap:18px;
+      .workflowMeta {
+        display: grid;
+        gap: 18px;
       }
 
-      .workflowMetaBlock{
-        padding-top:14px;
-        border-top:1px solid rgba(255,255,255,.08);
+      .workflowMetaBlock {
+        padding-top: 14px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
       }
 
-      .workflowMetaLabel{
-        font-size:.75rem;
-        letter-spacing:.08em;
-        text-transform:uppercase;
-        color:rgba(255,255,255,.42);
-        margin-bottom:6px;
+      .workflowMetaLabel {
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.42);
+        margin-bottom: 6px;
       }
 
-      .workflowMetaValue{
-        color:rgba(255,255,255,.9);
-        line-height:1.5;
-        font-size:.98rem;
+      .workflowMetaValue {
+        color: rgba(255, 255, 255, 0.9);
+        line-height: 1.5;
+        font-size: 0.98rem;
       }
 
-      .workflowMain{
-        min-width:0;
+      .workflowMain {
+        min-width: 0;
       }
 
-      .workflowPreviewCard{
-        margin:0;
-        padding:12px;
-        border-radius:24px;
-        border:1px solid rgba(255,255,255,.08);
-        background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.025));
-        box-shadow:0 30px 70px rgba(0,0,0,.28);
+      .workflowPreviewCard {
+        margin: 0;
+        padding: 12px;
+        border-radius: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.025));
+        box-shadow: 0 30px 70px rgba(0, 0, 0, 0.28);
       }
 
-      .workflowPreviewCard img{
-        display:block;
-        width:100%;
-        height:auto;
-        border-radius:16px;
+      .workflowPreviewCard img {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-height: 75vh;
+        object-fit: contain;
+        border-radius: 16px;
+        cursor: zoom-in;
       }
 
-      .workflowBody{
-        margin-top:46px;
+      .workflowBody {
+        margin-top: 46px;
       }
 
-      .workflowBody .sectionHead{
-        max-width:980px;
+      .workflowBody .sectionHead {
+        max-width: 980px;
       }
 
-      @media (max-width: 1100px){
-        .workflowShell{
-          grid-template-columns:1fr;
-          gap:28px;
+      #imgZoomViewer {
+        position: fixed;
+        inset: 0;
+        background: rgba(10, 10, 15, 0.92);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.25s;
+      }
+
+      #imgZoomViewer.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      #imgZoomTarget {
+        max-width: 90vw;
+        max-height: 90vh;
+        transform-origin: center;
+        transition: transform 0.08s;
+        cursor: zoom-out;
+      }
+
+      @media (max-width: 1100px) {
+        .workflowShell {
+          grid-template-columns: 1fr;
+          gap: 28px;
         }
 
-        .workflowSidebar{
-          position:relative;
-          top:auto;
+        .workflowSidebar {
+          position: relative;
+          top: auto;
         }
 
-        .workflowTitle{
-          max-width:none;
+        .workflowTitle {
+          max-width: none;
         }
 
-        .workflowSidebarText{
-          max-width:none;
+        .workflowSidebarText {
+          max-width: none;
         }
       }
     </style>
@@ -375,6 +404,40 @@
       </div>
     </footer>
 
+    <div id="imgZoomViewer">
+      <img id="imgZoomTarget" src="" alt="" />
+    </div>
+
     <script defer src="js/main.js"></script>
+    <script>
+      const preview = document.querySelector(".workflowPreviewCard img");
+      const viewer = document.getElementById("imgZoomViewer");
+      const target = document.getElementById("imgZoomTarget");
+
+      let scale = 1;
+
+      preview.addEventListener("click", () => {
+        target.src = preview.src;
+        target.alt = preview.alt;
+        viewer.classList.add("active");
+        scale = 1;
+        target.style.transform = "scale(1)";
+      });
+
+      viewer.addEventListener("click", () => {
+        viewer.classList.remove("active");
+      });
+
+      target.addEventListener("click", (e) => {
+        e.stopPropagation();
+      });
+
+      target.addEventListener("wheel", (e) => {
+        e.preventDefault();
+        scale += e.deltaY * -0.001;
+        scale = Math.min(Math.max(0.8, scale), 3);
+        target.style.transform = `scale(${scale})`;
+      }, { passive: false });
+    </script>
   </body>
 </html>
